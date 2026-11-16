@@ -354,6 +354,10 @@
       if (btn) selectServer(btn.getAttribute('data-server'));
     });
 
+    // IP address box (step 0.3): validate on every keystroke, show a message on blur
+    document.addEventListener('input',  function (e) { if (e.target && e.target.id === 'server-ip') setIpFromInput(e.target.value, false); });
+    document.addEventListener('change', function (e) { if (e.target && e.target.id === 'server-ip') setIpFromInput(e.target.value, true); });
+
     // Restore previously selected server and student on load
     restoreServerSelection();
     restoreStudentSelection();
@@ -374,19 +378,24 @@
   var gfBadgeClearEl = document.getElementById('student-badge-clear');
 
   // ── SERVER SELECTION ─────────────────────────────────────────────────────
-  // Fills <myIPaddress> and ae_<server>_key.pem across the guide.
+  // Fills ae_<server>_key.pem (from the chosen server) and <myIPaddress> (from the
+  // IP address the attendee pastes once in step 0.3) across the guide.
+  // No IP address is stored in this code.
   var SERVER_KEY = 'flight400-server-v1';
+  var IP_KEY     = 'flight400-ip-v1';
   var SERVERS = {
-    primary: { label: 'Primary', ip: '169.59.252.70' },
-    backup:  { label: 'Backup',  ip: '169.59.252.205' }
+    primary: { label: 'Primary' },
+    backup:  { label: 'Backup' }
   };
+  var IPV4_RE = /^(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}$/;
   var studentSel   = null;   // { num, nn, libNum, port } once a row is chosen
-  var serverSel    = null;   // { id, label, ip } once a server is chosen
+  var serverSel    = null;   // { id, label } once a server is chosen
+  var ipVal        = null;   // validated IPv4 string once pasted in step 0.3
   var badgeStudent = null;   // { num, libNum, port, name } for the badge
 
   function selectServer(id) {
     if (!SERVERS[id]) return;
-    serverSel = { id: id, label: SERVERS[id].label, ip: SERVERS[id].ip };
+    serverSel = { id: id, label: SERVERS[id].label };
     try { localStorage.setItem(SERVER_KEY, id); } catch (e) {}
     applyAllReplacements();
     highlightServer();
@@ -394,12 +403,36 @@
   }
 
   function restoreServerSelection() {
-    var id = null;
-    try { id = localStorage.getItem(SERVER_KEY); } catch (e) {}
-    if (!id || !SERVERS[id]) return;
-    serverSel = { id: id, label: SERVERS[id].label, ip: SERVERS[id].ip };
+    var id = null, ip = null;
+    try { id = localStorage.getItem(SERVER_KEY); ip = localStorage.getItem(IP_KEY); } catch (e) {}
+    if (id && SERVERS[id]) serverSel = { id: id, label: SERVERS[id].label };
+    if (ip && IPV4_RE.test(ip)) {
+      ipVal = ip;
+      document.querySelectorAll('#server-ip').forEach(function (el) { el.value = ip; });
+    }
+    if (!serverSel && !ipVal) return;
     applyAllReplacements();
     highlightServer();
+    refreshBadge();
+  }
+
+  // Called when the attendee types or pastes in the IP box (step 0.3).
+  // Only a valid IPv4 address is accepted; anything else clears the value.
+  function setIpFromInput(raw, showMsg) {
+    var v = (raw || '').trim();
+    var msg = document.getElementById('server-ip-msg');
+    var ok = IPV4_RE.test(v);
+    if (ok) {
+      ipVal = v;
+      try { localStorage.setItem(IP_KEY, v); } catch (e) {}
+    } else if (ipVal !== null) {
+      ipVal = null;
+      try { localStorage.removeItem(IP_KEY); } catch (e) {}
+    }
+    if (msg) {
+      msg.textContent = (!ok && v && showMsg) ? 'Enter a valid IP address: four numbers from 0 to 255 separated by dots.' : '';
+    }
+    applyAllReplacements();
     refreshBadge();
   }
 
@@ -448,7 +481,7 @@
   }
 
   function clearStudent() {
-    try { localStorage.removeItem(STUDENT_KEY); localStorage.removeItem(SERVER_KEY); } catch (e) {}
+    try { localStorage.removeItem(STUDENT_KEY); localStorage.removeItem(SERVER_KEY); localStorage.removeItem(IP_KEY); } catch (e) {}
     // Reload to restore original placeholder text
     window.location.reload();
   }
@@ -501,11 +534,8 @@
         .replace(/\b30nn\b/g,    String(port))
         .replace(/(?<![0-9])nn\b/g, nn);
     }
-    if (serverSel) {
-      text = text
-        .replace(/<myIPaddress>/g, serverSel.ip)
-        .replace(/<server>/g,      serverSel.id);
-    }
+    if (ipVal)     text = text.replace(/<myIPaddress>/g, ipVal);
+    if (serverSel) text = text.replace(/<server>/g,      serverSel.id);
     return text;
   }
 
@@ -564,13 +594,17 @@
       parts.push('<strong>' + serverSel.label + '</strong>' + (badgeStudent ? '' : ' server'));
     }
     var missing = [];
-    if (!serverSel)   missing.push('server');
+    if (!serverSel)    missing.push('server');
+    if (!ipVal)        missing.push('IP address');
     if (!badgeStudent) missing.push('library');
     if (missing.length) {
-      parts.push('<span class="badge-flag">⚠ Choose your ' + missing.join(' and ') + ' (step 0.3)</span>');
+      var list = missing.length > 1
+        ? missing.slice(0, -1).join(', ') + ' and ' + missing[missing.length - 1]
+        : missing[0];
+      parts.push('<span class="badge-flag">⚠ Set your ' + list + ' (step 0.3)</span>');
     }
     gfBadgeEl.classList.toggle('needs-choice', missing.length > 0);
-    if (gfBadgeClearEl) gfBadgeClearEl.style.display = (serverSel || badgeStudent) ? '' : 'none';
+    if (gfBadgeClearEl) gfBadgeClearEl.style.display = (serverSel || ipVal || badgeStudent) ? '' : 'none';
     if (gfBadgeNameEl) {
       gfBadgeNameEl.innerHTML = parts.join(dot);
       gfBadgeNameEl.setAttribute('role', 'button');

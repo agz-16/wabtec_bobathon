@@ -56,18 +56,18 @@ Two extensions are required. The **IBM Bob Premium Package for i** is often pre-
 
 ---
 
-## 0.3 — Choose Your Server and Library Number
+## 0.3 — Choose Your Server, IP Address and Library Number
 
 Your instructor will assign you a library number. Each participant has their own copy of the FLIGHT400 application in a library named **FLGHT4nn** (e.g. FLGHT401, FLGHT402). Use only your assigned number throughout the exercises.
 
-> ⚠️ **Action required:** Your instructor will tell you which server to use. Find the row in the table below with your assigned library number. Wherever this guide shows `4nn` or `30nn`, use the values from your row.
+> ⚠️ **Action required:** Your instructor will tell you which server to use and give you its IP address. Find the row in the table below with your assigned library number. Wherever this guide shows `4nn` or `30nn`, use the values from your row.
 
-| Server | IP address | Private key file |
-|--------|-----------|------------------|
-| Primary | `169.59.252.70` | `ae_primary_key.pem` |
-| Backup | `169.59.252.205` | `ae_backup_key.pem` |
+| Server | Private key file |
+|--------|------------------|
+| Primary | `ae_primary_key.pem` |
+| Backup | `ae_backup_key.pem` |
 
-Wherever this guide shows `<myIPaddress>` or `ae_<server>_key.pem`, use the values for your server. The user profile is `ITZUSER` on both.
+Wherever this guide shows `<myIPaddress>`, use the IP address your instructor gave you. Wherever it shows `ae_<server>_key.pem`, use the key file for your server. The user profile is `ITZUSER` on both.
 
 > 💡 **Spelling note:** The library name is `FLGHT4nn` — there is **no "I"** in FLGHT.
 
