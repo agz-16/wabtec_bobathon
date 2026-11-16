@@ -259,15 +259,6 @@
   // ── CARD INIT (called after all partials are loaded) ──────────────────────
   function initCards() {
 
-    // Inject Box folder link into Setup step 5 sub-step 2 if configured
-    var cfg = window.FLIGHT400_CONFIG || {};
-    if (cfg.boxFolderUrl) {
-      var boxContainer = document.getElementById('box-folder-link-container');
-      if (boxContainer) {
-        boxContainer.innerHTML = '<a href="' + cfg.boxFolderUrl + '" target="_blank" rel="noopener" style="color:var(--ibm-blue);font-weight:600">this Box folder↗</a>';
-      }
-    }
-
     var cards = document.querySelectorAll('.bubble-card');
 
     // Bubble pop-in via IntersectionObserver
@@ -348,17 +339,11 @@
       });
     }
 
-    // Server picker (Primary / Backup)
-    document.addEventListener('click', function (e) {
-      var btn = e.target.closest('.server-option');
-      if (btn) selectServer(btn.getAttribute('data-server'));
-    });
-
     // IP address box (step 0.3): validate on every keystroke, show a message on blur
     document.addEventListener('input',  function (e) { if (e.target && e.target.id === 'server-ip') setIpFromInput(e.target.value, false); });
     document.addEventListener('change', function (e) { if (e.target && e.target.id === 'server-ip') setIpFromInput(e.target.value, true); });
 
-    // Restore previously selected server and student on load
+    // Restore previously entered IP address and selected student on load
     restoreServerSelection();
     restoreStudentSelection();
     refreshBadge();   // shows the "choose" flag if nothing is selected yet
@@ -377,42 +362,25 @@
   var gfBadgeNameEl  = document.getElementById('student-badge-name');
   var gfBadgeClearEl = document.getElementById('student-badge-clear');
 
-  // ── SERVER SELECTION ─────────────────────────────────────────────────────
-  // Fills ae_<server>_key.pem (from the chosen server) and <myIPaddress> (from the
-  // IP address the attendee pastes once in step 0.3) across the guide.
-  // No IP address is stored in this code.
-  var SERVER_KEY = 'flight400-server-v1';
+  // ── SERVER IP ADDRESS ────────────────────────────────────────────────────
+  // Fills <myIPaddress> (from the IP address the attendee pastes once in step 0.3)
+  // across the guide. No IP address is stored in this code. The key file is always
+  // ae_primary_key.pem, written literally in the guide.
   var IP_KEY     = 'flight400-ip-v1';
-  var SERVERS = {
-    primary: { label: 'Primary' },
-    backup:  { label: 'Backup' }
-  };
   var IPV4_RE = /^(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}$/;
   var studentSel   = null;   // { num, nn, libNum, port } once a row is chosen
-  var serverSel    = null;   // { id, label } once a server is chosen
   var ipVal        = null;   // validated IPv4 string once pasted in step 0.3
   var badgeStudent = null;   // { num, libNum, port, name } for the badge
 
-  function selectServer(id) {
-    if (!SERVERS[id]) return;
-    serverSel = { id: id, label: SERVERS[id].label };
-    try { localStorage.setItem(SERVER_KEY, id); } catch (e) {}
-    applyAllReplacements();
-    highlightServer();
-    refreshBadge();
-  }
-
   function restoreServerSelection() {
-    var id = null, ip = null;
-    try { id = localStorage.getItem(SERVER_KEY); ip = localStorage.getItem(IP_KEY); } catch (e) {}
-    if (id && SERVERS[id]) serverSel = { id: id, label: SERVERS[id].label };
+    var ip = null;
+    try { ip = localStorage.getItem(IP_KEY); } catch (e) {}
     if (ip && IPV4_RE.test(ip)) {
       ipVal = ip;
       document.querySelectorAll('#server-ip').forEach(function (el) { el.value = ip; });
     }
-    if (!serverSel && !ipVal) return;
+    if (!ipVal) return;
     applyAllReplacements();
-    highlightServer();
     refreshBadge();
   }
 
@@ -434,14 +402,6 @@
     }
     applyAllReplacements();
     refreshBadge();
-  }
-
-  function highlightServer() {
-    document.querySelectorAll('.server-option').forEach(function (b) {
-      var on = !!serverSel && b.getAttribute('data-server') === serverSel.id;
-      b.classList.toggle('server-selected', on);
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
-    });
   }
 
   function padNum(n) {
@@ -481,7 +441,7 @@
   }
 
   function clearStudent() {
-    try { localStorage.removeItem(STUDENT_KEY); localStorage.removeItem(SERVER_KEY); localStorage.removeItem(IP_KEY); } catch (e) {}
+    try { localStorage.removeItem(STUDENT_KEY); localStorage.removeItem('flight400-server-v1'); localStorage.removeItem(IP_KEY); } catch (e) {}
     // Reload to restore original placeholder text
     window.location.reload();
   }
@@ -534,8 +494,7 @@
         .replace(/\b30nn\b/g,    String(port))
         .replace(/(?<![0-9])nn\b/g, nn);
     }
-    if (ipVal)     text = text.replace(/<myIPaddress>/g, ipVal);
-    if (serverSel) text = text.replace(/<server>/g,      serverSel.id);
+    if (ipVal) text = text.replace(/<myIPaddress>/g, ipVal);
     return text;
   }
 
@@ -590,11 +549,7 @@
         : '<span style="opacity:0.6;font-weight:500;font-size:0.68rem">Student&nbsp;</span><strong>' + st.num + '</strong>' + dot + 'FLGHT' + st.libNum);
       parts.push('<span style="font-family:var(--font-mono)">:' + st.port + '</span>');
     }
-    if (serverSel) {
-      parts.push('<strong>' + serverSel.label + '</strong>' + (badgeStudent ? '' : ' server'));
-    }
     var missing = [];
-    if (!serverSel)    missing.push('server');
     if (!ipVal)        missing.push('IP address');
     if (!badgeStudent) missing.push('library');
     if (missing.length) {
@@ -604,7 +559,7 @@
       parts.push('<span class="badge-flag">⚠ Set your ' + list + ' (step 0.3)</span>');
     }
     gfBadgeEl.classList.toggle('needs-choice', missing.length > 0);
-    if (gfBadgeClearEl) gfBadgeClearEl.style.display = (serverSel || ipVal || badgeStudent) ? '' : 'none';
+    if (gfBadgeClearEl) gfBadgeClearEl.style.display = (ipVal || badgeStudent) ? '' : 'none';
     if (gfBadgeNameEl) {
       gfBadgeNameEl.innerHTML = parts.join(dot);
       gfBadgeNameEl.setAttribute('role', 'button');

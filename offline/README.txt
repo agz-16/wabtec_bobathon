@@ -6,8 +6,10 @@ self-contained file: no other files, web server or internet connection
 are needed to read the guide.
 
 Still needs internet:
-  - The Box folder link (download your private key BEFORE going offline).
   - Links to external sites, for example IBM i Access Client Solutions.
+
+Get your private key file and server IP address from your instructor
+BEFORE going offline.
 
 Fonts fall back to your system fonts, so the layout looks slightly
 different from the online version.

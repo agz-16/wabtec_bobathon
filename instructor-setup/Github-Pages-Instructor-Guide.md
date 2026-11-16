@@ -43,7 +43,7 @@ Each company subfolder (e.g. `docs/first-acceptance/`) contains only **two files
 | File | What it does |
 |---|---|
 | `index.html` | Identical copy of `docs/_template/index.html` — loads shared CSS, JS, and tracks from `../` — **never edit this** |
-| `js/config.js` | The **only file you edit** — company name, event date, colors, agenda, attendee table, Box folder URL |
+| `js/config.js` | The **only file you edit** — company name, event date, colors, agenda, attendee table |
 
 All CSS, JS, track partials, and images live in `docs/` and are shared across every event subfolder via relative `../` paths. Updating a track exercise in `docs/tracks/` automatically updates every company event page.
 
@@ -96,10 +96,6 @@ window.FLIGHT400_CONFIG = {
 
   primaryColor: '#0078D4',   // Contoso blue — optional
   accentColor:  '#FFB900',   // Contoso gold — optional
-
-  // URL to the Box folder containing IBM i credentials & ssh_private_key.pem.
-  // Shown as a link in Setup step 5. Set to null to hide.
-  boxFolderUrl: 'https://ibm.ent.box.com/folder/YOUR_FOLDER_ID',
 
   agendaItems: [
     { time: '10:00 – 10:15', title: 'Welcome', bullets: ['...'] },
@@ -263,7 +259,7 @@ Editing a file in `docs/tracks/` still affects all events that have **not** plac
   - [ ] `eventName`
   - [ ] `eventDate`
   - [ ] `primaryColor` / `accentColor` *(optional)*
-  - [ ] `boxFolderUrl` — Box folder with IBM i credentials & key *(set to `null` to hide)*
+  - [ ] Share the private key file(s) and the server IP address with attendees separately (the guide no longer links to them)
   - [ ] `agendaItems[]` *(remove array or set to `[]` to hide Agenda button)*
   - [ ] `attendeeTable[]` — one row per attendee; confirm library names & ports from IBM i admin
   - [ ] `tracks: [...]` — *(optional)* list only the slugs needed; omit to show all 8
