@@ -8,14 +8,14 @@ This repository contains the lab materials for the American Eagle IBM i Moderniz
 
 **Everything you need to complete the lab is available on the hosted lab site.** Start with the environment setup, then work through the exercises at your own pace.
 
-#### Participant Setup** — Interactive setup guide with screenshots.
+#### Participant Setup — Interactive setup guide with screenshots.
 https://liv-fing.github.io/american_eagle_bobathon/setup.html
 
-#### Lab Guide** — Full exercise catalog with step-by-step instructions.
+#### Lab Guide — Full exercise catalog with step-by-step instructions.
 https://liv-fing.github.io/american_eagle_bobathon/
 
 
-### Offline copy of the lab guide
+#### Offline copy of the lab guide
 
 Use this if you want to read the whole guide (setup and all exercises, with screenshots) locally on your computer. 
 
