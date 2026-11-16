@@ -6,28 +6,22 @@ This repository contains the lab materials for the American Eagle IBM i Moderniz
 
 ## For Participants
 
-Everything you need to complete the lab is available on the hosted lab site. Start with the environment setup, then work through the exercises at your own pace.
+**Everything you need to complete the lab is available on the hosted lab site.** Start with the environment setup, then work through the exercises at your own pace.
 
-**Participant Setup** — Interactive setup guide with screenshots.
+#### Participant Setup** — Interactive setup guide with screenshots.
 https://liv-fing.github.io/american_eagle_bobathon/setup.html
 
-### Offline copy of the guide
+#### Lab Guide** — Full exercise catalog with step-by-step instructions.
+https://liv-fing.github.io/american_eagle_bobathon/
 
-Use this if you want to read the whole guide (setup and all exercises, with screenshots) without an internet connection.
+
+### Offline copy of the lab guide
+
+Use this if you want to read the whole guide (setup and all exercises, with screenshots) locally on your computer. 
 
 1. Download the zip: https://github.com/liv-fing/american_eagle_bobathon/raw/main/offline.zip
-2. Unzip it. You get a folder named `offline`.
-3. Open the `offline` folder and double-click **`index.html`**. It opens in your web browser. It is one self-contained file (about 21 MB) with all the screenshots built in.
-4. Do the same steps as the online guide. In step 0.3, paste your server IP address and click your library row.
-
-Notes:
-- Get your private key file and server IP address from your instructor **before** you go offline. External links still need internet.
-- Fonts look slightly different offline. Nothing else changes.
-- Do not open `offline/index.html` on GitHub itself. GitHub shows the page's source code instead of the guide, so use the zip.
-- There is also an [offline Environment Setup in markdown](docs/setup.md), which covers setup only.
-
-**Lab Guide** — Full exercise catalog with step-by-step instructions.
-https://liv-fing.github.io/american_eagle_bobathon/
+2. Unzip it and open the `offline` folder.
+3. Double-click **`index.html`**. It opens in your web browser. It is one self-contained file (about 21 MB) with all the screenshots built in.
 
 ---
 
