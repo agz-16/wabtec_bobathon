@@ -143,7 +143,7 @@ Your instructor will give you the IP address of your server. Wherever this guide
 
 ## 0.4 — Connect Bob IDE to IBM i
 
-1. **Add a new connection** — Click the IBM i icon in the Activity Bar (shown circled in red in the screenshot below), then click **New Connection**. Enter the host IP `<myIPaddress>`, the user profile `ITZUSER`, and the `ae_primary_key.pem` private key file your instructor shared with you. When prompted for the private key, browse to the saved `ae_primary_key.pem` file on your computer. **Do not use the password here — use only the `ae_primary_key.pem` private key file.**
+1. **Add a new connection** — Click the IBM i icon in the Activity Bar (indicated by the red arrow in the screenshot below), then click **New Connection**. Enter the host IP `<myIPaddress>`, the user profile `ITZUSER`, and the `ae_primary_key.pem` private key file your instructor shared with you. When prompted for the private key, browse to the saved `ae_primary_key.pem` file on your computer. **Do not use the password here — use only the `ae_primary_key.pem` private key file.**
 
    ![IBM i icon in the Bob Activity Bar](img/ibmi_icon.png)
 
