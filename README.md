@@ -15,9 +15,13 @@ https://liv-fing.github.io/american_eagle_bobathon/setup.html
 https://ibm.ent.box.com/folder/437286700244?box_source=collab-auto-accept-notify-invitee&s=6l9fyh0a0icfwqeexdaqt6ramrbgqqjd
 
 <details>
-<summary>Offline setup guide</summary>
+<summary>Offline copy of the guide</summary>
 
-- [Environment Setup](docs/setup.md) — All setup steps (0.1–0.5) with screenshots.
+- [Download offline.zip](offline.zip?raw=1) — The full guide (setup and all exercises) with screenshots. Unzip it and double-click `offline/index.html`. No internet connection or web server is needed to read it. Download your private key from Box before going offline.
+- Or open the [offline/](offline/) folder in this repository.
+- [Environment Setup (markdown)](docs/setup.md) — All setup steps (0.1–0.5) with screenshots.
+
+To rebuild the offline copy after editing anything under `docs/`, run `python3 build-offline.py` and commit the result.
 
 </details>
 
