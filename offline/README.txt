@@ -1,8 +1,9 @@
 FLIGHT400 Bobathon - offline lab guide
 ======================================
 
-Open index.html in your browser (double-click it). No web server and no
-internet connection are needed to read the guide.
+Open index.html in your browser (double-click it). It is a single
+self-contained file: no other files, web server or internet connection
+are needed to read the guide.
 
 Still needs internet:
   - The Box folder link (download your private key BEFORE going offline).
