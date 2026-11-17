@@ -145,7 +145,7 @@
           </div>
           <div class="uc-body"><div class="uc-body-inner">
             <p class="uc-desc"><strong>New feature of IBM Bob Premium Package for i.</strong> The <strong>Understand Dashboard</strong> scans your IBM i library and builds a live dependency graph of every program, file, service program, menu, and command — without you reading a single line of source.</p>
-            <div class="info-box mb-l">💡 <strong>Metadata Database &amp; Multi-Developer Sharing:</strong> Understand is configured with a metadata database (library) to store the scanned application metadata. In a team environment, this metadata library can be shared across multiple developers so everyone benefits from a single scan, assuming each developer has the necessary authority to access the 'understand' library (ex: BOBLIB). For these labs on a shared IBM i, each lab practitioner can also create and use their own metadata library (e.g., <code>BOBLIBnn</code>), though in practice it could be shared.</div>
+            <div class="info-box mb-l">💡 <strong>Shared Understand Database:</strong> The Understand component is pre-installed in the shared database library on your IBM i. You do not need to create or configure a separate metadata library — everyone uses the existing installation to scan and view their assigned application (<code>FLGHT4nn</code>).</div>
             <div class="mode-steps">
               <div class="mode-step">
                 <div class="step-num">1</div>
@@ -162,37 +162,37 @@
               <div class="mode-step">
                 <div class="step-num">2</div>
                 <div class="step-body">
-                  <div class="step-title">Install the Understand Component</div>
-                  <div class="step-desc">If not already done, install the Understand Component on IBM i, specifying the 'understand' library and other necessary information.</div>
+                  <div class="step-title">Verify Understand Component</div>
+                  <div class="step-desc">Look at the <strong>Understand component</strong> card at the top of the dashboard:</div>
+                  <div class="step-desc mt-s">• If it shows <strong class="badge badge--green">● Installed</strong>, the shared backend is ready — you can skip directly to Step 3.<br/>• If it shows <strong>Not installed</strong>, click <strong>Install Understand</strong> and click <strong>Proceed</strong> on the confirmation popup to use the default settings.</div>
                   <div class="step-screenshot">
-                    <img src="img/udl.png" alt="Understand overview showing the component as Not installed with an Install Understand button"/>
-                    <div class="step-screenshot-caption">Click Install Understand</div>
+                    <img src="img/udl.png" alt="Understand overview showing the component status and Install Understand button"/>
+                    <div class="step-screenshot-caption">Verify the component shows Installed, or click Install Understand if needed</div>
                   </div>
-                  <div class="step-desc mt-m">You will then see a pop up confirming whether you wish to proceed with the Understand installation — click <strong>Proceed</strong>.</div>
                   <div class="step-screenshot step-screenshot--xs">
                     <img src="img/pop.png" alt="Understand Installation confirmation pop up with Proceed button"/>
-                    <div class="step-screenshot-caption">Click Proceed to confirm the Understand installation</div>
+                    <div class="step-screenshot-caption">Click Proceed if prompted to confirm the installation</div>
                   </div>
                 </div>
               </div>
               <div class="mode-step">
                 <div class="step-num">3</div>
                 <div class="step-body">
-                  <div class="step-title">Adding an Application</div>
-                  <div class="step-desc">If no application exists yet, click <strong>New Application</strong>, name it <code>FLGHT4nn</code>, add your application library <code>FLGHT4nn</code> (the library containing compiled objects, not source) and metadata library <code>BOBLIBnn</code>, then click <strong>Scan</strong>. The scan takes about 30–60 seconds.</div>
+                  <div class="step-title">Add and Scan Your Application</div>
+                  <div class="step-desc">If your application is not already listed, click <strong>+ Add application</strong>. In the dialog, set the application name to <code>FLGHT4nn</code>, select your assigned library <code>FLGHT4nn</code>, click <strong>+ Add</strong>, and click <strong>Add application</strong>. Then click <strong>Scan</strong>. The scan takes about 30–60 seconds.</div>
                   <div class="step-screenshot">
-                    <img src="img/clickaddapp.png" alt="Click New Application in the Understand Dashboard"/>
-                    <div class="step-screenshot-caption">Click New Application</div>
+                    <img src="img/clickaddapp.png" alt="Click Add application in the Understand Dashboard"/>
+                    <div class="step-screenshot-caption">Click + Add application</div>
                   </div>
                   <div class="step-screenshot">
                     <img src="img/addapp.png" alt="Add application form with the FLGHT4nn library selected"/>
-                    <div class="step-screenshot-caption">Enter the application name and library, then click Add application</div>
+                    <div class="step-screenshot-caption">Select FLGHT4nn, click + Add, then click Add application</div>
                   </div>
                   <div class="step-screenshot">
                     <img src="img/scan.png" alt="Scan button for the new application in Understand"/>
-                    <div class="step-screenshot-caption">Click Scan</div>
+                    <div class="step-screenshot-caption">Click Scan on your application card</div>
                   </div>
-                  <div class="info-box">If an application named <code>FLGHT4nn</code> already exists and shows <strong>SCANNED</strong>, skip directly to the next step.</div>
+                  <div class="info-box">If an application named <code>FLGHT4nn</code> already exists and shows <strong>SCANNED</strong>, you can skip directly to Step 4.</div>
                 </div>
               </div>
               <div class="mode-step">

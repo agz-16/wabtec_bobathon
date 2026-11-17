@@ -42,13 +42,17 @@ Two extensions are required. The **IBM Bob Premium Package for i** is often pre-
 
    *Click the Extensions icon in the Activity Bar to open the Extensions panel*
 
-2. **Verify IBM Bob Premium Package for i** — Search for **"IBM Bob Premium"**. If **IBM Bob Premium Package for i** (publisher: IBM) appears with an **Install** button on the right, click **Install** now. If there is no **Install** button, you're all set — skip to step 3. This package includes Code for IBM i (source editing, object browser, IFS browser, Db2 for i, and more).
+2. **Verify IBM Bob Premium Package for i** — Search for **"IBM Bob Premium Package for i"**. If **IBM Bob Premium Package for i** (publisher: IBM) appears with an **Install** button on the right, click **Install** now. If there is no **Install** button, you're all set — skip to step 3. This package includes Code for IBM i (source editing, object browser, IFS browser, Db2 for i, and more).
 
-   ![Searching for IBM Bob Premium in the Extensions panel](img/searching-ibm-i.png)
+   > 💡 **What is IBM Bob Premium Package for i?** IBM Bob is an AI coding assistant, a lot like having a smart helper sitting next to you while you code. By default, Bob only works on files on your PC. The Premium Package for i is the add-on that connects Bob directly to your IBM i. Bob can then read, explain, edit, and test your RPG, CL, and SQL right where it lives. You don’t export it, edit it, and copy it back. It also comes with the Code for IBM i tools you already know.
 
-   *Search for "IBM Bob Premium" — an Install button on the right means it still needs to be installed*
+   ![Searching for IBM Bob Premium Package for i in the Extensions panel](img/searching-ibm-i.png)
+
+   *Search for "IBM Bob Premium Package for i" — an Install button on the right means it still needs to be installed*
 
 3. **Install IBM i Development Pack** — Just like the previous step, search for **"IBM i Development Pack"** in the Extensions panel. This extension is **not** pre-installed — click **Install** if it does not appear under *Installed*. Reload Bob if prompted.
+
+   > 💡 **What is the IBM i Development Pack?** The IBM i Development Pack adds all the IBM i tools to Bob in one install, so Bob can use them. That includes the connection to your system and the editing and database tools for RPG, CL, COBOL, and SQL. Think of it as the toolbox, and Bob is the AI helper that uses it.
 
 4. **Open Bob Settings** — Click the **Bob Settings** button in the bottom-right corner of the Bob IDE to open the Settings panel.
 
@@ -56,7 +60,7 @@ Two extensions are required. The **IBM Bob Premium Package for i** is often pre-
 
    *Click Bob Settings in the bottom-right corner of the Bob IDE*
 
-5. **Install Premium Package for i** — Further down the panel, next to the **Add ons** setting, you should see IBM Bob Premium Package for i. Click **Install**. Bob may ask you to restart the IDE — if so, accept and restart.
+5. **Install Premium Package for i** — Further down the panel, next to the **Add ons** setting, you should see "IBM Bob Premium Package for i" displayed. Click **Install**, this might seem redundant but it is a required activation within Settings to fully connect the Premium Package. After its done downloading, Bob may ask you to restart the IDE — if so, accept and restart.
 
    ![IBM Bob Premium Package for i shown next to the Add ons setting with an Install button](img/activatedd.png)
 
@@ -68,82 +72,156 @@ Two extensions are required. The **IBM Bob Premium Package for i** is often pre-
 
    *Click the icon in the top-right corner to return to the Bob chat*
 
-   ![IBM i Developer and IBM i Database modes in the mode selector](img/new-modes.png)
+   ![IBM i Developer and IBM i Database modes in the mode selector](img/updated-new-modes.png)
 
    *IBM i Developer and IBM i Database appear in the mode list*
+
+7. **Understanding Bob Modes** — A mode is like a job description for Bob. It tells Bob two things: how to act (its role and expertise), and what it is allowed to touch (its permissions). Switching modes is like giving the same assistant a different job.
+
+   **Bob comes with 3 default modes:**
+
+   **1) Agent Mode**
+
+   > **Role (the doer):** Turns an idea or plan into working code. Use it to write, change, or refactor code, implement features, and fix bugs. **Permissions:** Broadest. It can read, edit, and run commands.
+
+   **2) Plan Mode**
+
+   > **Role (the architect):** Analyzes requirements and designs the steps before any code is written. **Permissions:** It can read, but it can only edit Markdown and text files — **meaning it cannot edit any coding files**. It can write a plan, but it cannot change your code.
+
+   **3) Ask Mode**
+
+   > **Role (the explainer):** Answers questions and explains code without making changes. **Permissions:** Read only.
+
+   > 💡 **Tip:** Want to understand code? Use **Ask**. Want a plan first? Use **Plan**. Ready to build? Switch to **Agent**.
+
+   **IBM i specific modes:** The IBM Bob Premium Package for i adds two IBM i specialist modes. They already know IBM i terms and best practices, so you don't have to explain the platform to Bob. At the start of each task, Bob automatically receives your connection details, OS version, CCSID settings, and library lists.
+
+   **1) IBM i Developer Mode**
+
+   > **Role (the IBM i programmer):** Explains, generates, compiles, tests, and documents code on IBM i. It works with RPG (OPM and ILE), SQL on Db2 for i, CL, DDS, and COBOL. **Typical tasks:** Explain or document program logic, write or refactor source code, compile objects, generate and fix RPG unit tests, plan modernization, convert fixed-format RPG to free-format. **Permissions:** Read, edit, execute, MCP, todo, subtask, and skill.
+
+   **2) IBM i Database Mode**
+
+   > **Role (the Db2 for i specialist):** Generates, modernizes, tunes, and reviews SQL on Db2 for i. It checks for correctness, performance, security, and IBM i best practices. It also helps you understand complex database schemas and analyze query performance and indexes. **Permissions:** The same as IBM i Developer, except it does not include MCP.
+
+   > 💡 **Tip:** Use **IBM i Developer** for code work. Use **IBM i Database** for SQL and schema work.
 
 ---
 
 ## 0.3 — Choose Your Server, IP Address and Library Number
 
-Your instructor will assign you a library number. Each participant has their own copy of the FLIGHT400 application in a library named **FLGHT4nn** (e.g. FLGHT401, FLGHT402). Use only your assigned number throughout the exercises so everyone can work independently.
+1. **Find your assigned IP address and library number** — Your instructor will share the server IP address with you and display a spreadsheet assigning each participant a library number. Each participant has their own copy of the FLIGHT400 application in an isolated library named **FLGHT4nn** (e.g. FLGHT401, FLGHT402). Use only your assigned number throughout the lab so everyone can work independently without overwriting each other.
 
-> **Action required (2 things):** (1) **paste the IP address** your instructor gave you into the box, and (2) in the table below, **click the row with your assigned library number**. You only do this once. The IP address, library name, dev port, and prompts throughout this guide update to match.
+   > 💡 **Spelling note:** The library name is `FLGHT4nn` — note there is **no "I"** in FLGHT. Your instructor may say "Flight 4-nn" verbally, but when typing always use `FLGHT4nn` (F‑L‑G‑H‑T).
 
-Your instructor will give you the IP address of your server. Wherever this guide shows `<myIPaddress>`, use that address.
+2. **Type in the IP address from your instructor** — Paste or type the IP address provided by your instructor into the box below. You only do this once — all connection settings and prompts across this guide will update to match.
 
-> 💡 **Spelling note:** The library name is `FLGHT4nn` — note there is **no "I"** in FLGHT. Your instructor may say "Flight 4-nn" verbally, but when typing always use `FLGHT4nn` (F‑L‑G‑H‑T).
+   Your instructor will give you the IP address of your server. Wherever this guide shows `<myIPaddress>`, use that address.
 
-| Student # | Library | Dev Port | React App URL |
-|:---:|---|:---:|---|
-| 1 | `FLGHT401` | 3001 | `http://localhost:3001` |
-| 2 | `FLGHT402` | 3002 | `http://localhost:3002` |
-| 3 | `FLGHT403` | 3003 | `http://localhost:3003` |
-| 4 | `FLGHT404` | 3004 | `http://localhost:3004` |
-| 5 | `FLGHT405` | 3005 | `http://localhost:3005` |
-| 6 | `FLGHT406` | 3006 | `http://localhost:3006` |
-| 7 | `FLGHT407` | 3007 | `http://localhost:3007` |
-| 8 | `FLGHT408` | 3008 | `http://localhost:3008` |
-| 9 | `FLGHT409` | 3009 | `http://localhost:3009` |
-| 10 | `FLGHT410` | 3010 | `http://localhost:3010` |
-| 11 | `FLGHT411` | 3011 | `http://localhost:3011` |
-| 12 | `FLGHT412` | 3012 | `http://localhost:3012` |
-| 13 | `FLGHT413` | 3013 | `http://localhost:3013` |
-| 14 | `FLGHT414` | 3014 | `http://localhost:3014` |
-| 15 | `FLGHT415` | 3015 | `http://localhost:3015` |
-| 16 | `FLGHT416` | 3016 | `http://localhost:3016` |
-| 17 | `FLGHT417` | 3017 | `http://localhost:3017` |
-| 18 | `FLGHT418` | 3018 | `http://localhost:3018` |
-| 19 | `FLGHT419` | 3019 | `http://localhost:3019` |
-| 20 | `FLGHT420` | 3020 | `http://localhost:3020` |
-| 21 | `FLGHT421` | 3021 | `http://localhost:3021` |
-| 22 | `FLGHT422` | 3022 | `http://localhost:3022` |
-| 23 | `FLGHT423` | 3023 | `http://localhost:3023` |
-| 24 | `FLGHT424` | 3024 | `http://localhost:3024` |
-| 25 | `FLGHT425` | 3025 | `http://localhost:3025` |
-| 26 | `FLGHT426` | 3026 | `http://localhost:3026` |
-| 27 | `FLGHT427` | 3027 | `http://localhost:3027` |
-| 28 | `FLGHT428` | 3028 | `http://localhost:3028` |
-| 29 | `FLGHT429` | 3029 | `http://localhost:3029` |
-| 30 | `FLGHT430` | 3030 | `http://localhost:3030` |
-| 31 | `FLGHT431` | 3031 | `http://localhost:3031` |
-| 32 | `FLGHT432` | 3032 | `http://localhost:3032` |
-| 33 | `FLGHT433` | 3033 | `http://localhost:3033` |
-| 34 | `FLGHT434` | 3034 | `http://localhost:3034` |
-| 35 | `FLGHT435` | 3035 | `http://localhost:3035` |
-| 36 | `FLGHT436` | 3036 | `http://localhost:3036` |
-| 37 | `FLGHT437` | 3037 | `http://localhost:3037` |
-| 38 | `FLGHT438` | 3038 | `http://localhost:3038` |
-| 39 | `FLGHT439` | 3039 | `http://localhost:3039` |
-| 40 | `FLGHT440` | 3040 | `http://localhost:3040` |
-| 41 | `FLGHT441` | 3041 | `http://localhost:3041` |
-| 42 | `FLGHT442` | 3042 | `http://localhost:3042` |
-| 43 | `FLGHT443` | 3043 | `http://localhost:3043` |
-| 44 | `FLGHT444` | 3044 | `http://localhost:3044` |
-| 45 | `FLGHT445` | 3045 | `http://localhost:3045` |
-| 46 | `FLGHT446` | 3046 | `http://localhost:3046` |
-| 47 | `FLGHT447` | 3047 | `http://localhost:3047` |
-| 48 | `FLGHT448` | 3048 | `http://localhost:3048` |
-| 49 | `FLGHT449` | 3049 | `http://localhost:3049` |
-| 50 | `FLGHT450` | 3050 | `http://localhost:3050` |
+3. **Select your assigned library number** — Find your assigned Student # in the table below and click the **Select** button. A quick confirmation pop-up will appear to verify your choice. Once confirmed, all commands, library names, dev ports, and prompts throughout the guide will automatically update to match your number.
 
-> 💡 The **Dev Port** is only needed for **Exercise 4**. When Bob asks you to pin your Vite dev server to a port, use your Dev Port. Your React app will be reachable at the React App URL shown — provided your SSH tunnel (Exercise 4, step 4.1.1) is active.
+   | Student # | Select | Library | Dev Port | React App URL |
+   |:---:|:---:|---|:---:|---|
+   | 1 |  | `FLGHT401` | 3001 | `http://localhost:3001` |
+   | 2 |  | `FLGHT402` | 3002 | `http://localhost:3002` |
+   | 3 |  | `FLGHT403` | 3003 | `http://localhost:3003` |
+   | 4 |  | `FLGHT404` | 3004 | `http://localhost:3004` |
+   | 5 |  | `FLGHT405` | 3005 | `http://localhost:3005` |
+   | 6 |  | `FLGHT406` | 3006 | `http://localhost:3006` |
+   | 7 |  | `FLGHT407` | 3007 | `http://localhost:3007` |
+   | 8 |  | `FLGHT408` | 3008 | `http://localhost:3008` |
+   | 9 |  | `FLGHT409` | 3009 | `http://localhost:3009` |
+   | 10 |  | `FLGHT410` | 3010 | `http://localhost:3010` |
+   | 11 |  | `FLGHT411` | 3011 | `http://localhost:3011` |
+   | 12 |  | `FLGHT412` | 3012 | `http://localhost:3012` |
+   | 13 |  | `FLGHT413` | 3013 | `http://localhost:3013` |
+   | 14 |  | `FLGHT414` | 3014 | `http://localhost:3014` |
+   | 15 |  | `FLGHT415` | 3015 | `http://localhost:3015` |
+   | 16 |  | `FLGHT416` | 3016 | `http://localhost:3016` |
+   | 17 |  | `FLGHT417` | 3017 | `http://localhost:3017` |
+   | 18 |  | `FLGHT418` | 3018 | `http://localhost:3018` |
+   | 19 |  | `FLGHT419` | 3019 | `http://localhost:3019` |
+   | 20 |  | `FLGHT420` | 3020 | `http://localhost:3020` |
+   | 21 |  | `FLGHT421` | 3021 | `http://localhost:3021` |
+   | 22 |  | `FLGHT422` | 3022 | `http://localhost:3022` |
+   | 23 |  | `FLGHT423` | 3023 | `http://localhost:3023` |
+   | 24 |  | `FLGHT424` | 3024 | `http://localhost:3024` |
+   | 25 |  | `FLGHT425` | 3025 | `http://localhost:3025` |
+   | 26 |  | `FLGHT426` | 3026 | `http://localhost:3026` |
+   | 27 |  | `FLGHT427` | 3027 | `http://localhost:3027` |
+   | 28 |  | `FLGHT428` | 3028 | `http://localhost:3028` |
+   | 29 |  | `FLGHT429` | 3029 | `http://localhost:3029` |
+   | 30 |  | `FLGHT430` | 3030 | `http://localhost:3030` |
+   | 31 |  | `FLGHT431` | 3031 | `http://localhost:3031` |
+   | 32 |  | `FLGHT432` | 3032 | `http://localhost:3032` |
+   | 33 |  | `FLGHT433` | 3033 | `http://localhost:3033` |
+   | 34 |  | `FLGHT434` | 3034 | `http://localhost:3034` |
+   | 35 |  | `FLGHT435` | 3035 | `http://localhost:3035` |
+   | 36 |  | `FLGHT436` | 3036 | `http://localhost:3036` |
+   | 37 |  | `FLGHT437` | 3037 | `http://localhost:3037` |
+   | 38 |  | `FLGHT438` | 3038 | `http://localhost:3038` |
+   | 39 |  | `FLGHT439` | 3039 | `http://localhost:3039` |
+   | 40 |  | `FLGHT440` | 3040 | `http://localhost:3040` |
+   | 41 |  | `FLGHT441` | 3041 | `http://localhost:3041` |
+   | 42 |  | `FLGHT442` | 3042 | `http://localhost:3042` |
+   | 43 |  | `FLGHT443` | 3043 | `http://localhost:3043` |
+   | 44 |  | `FLGHT444` | 3044 | `http://localhost:3044` |
+   | 45 |  | `FLGHT445` | 3045 | `http://localhost:3045` |
+   | 46 |  | `FLGHT446` | 3046 | `http://localhost:3046` |
+   | 47 |  | `FLGHT447` | 3047 | `http://localhost:3047` |
+   | 48 |  | `FLGHT448` | 3048 | `http://localhost:3048` |
+   | 49 |  | `FLGHT449` | 3049 | `http://localhost:3049` |
+   | 50 |  | `FLGHT450` | 3050 | `http://localhost:3050` |
+
+   > 💡 **Note:** The **Dev Port** (`30nn`) is only used later in **Exercise 4** when launching the modernized web application.
+
+4. **Verify it is working**
+
+   > ✅ **Verify your setup** When setup is complete, you should see a floating status banner in the bottom-right corner of your screen with a green check mark and no warning icon. For example: `✅ Student 8 · FLGHT408 :3008` Your numbers will match the library row you selected. If you see a warning icon or anything looks different, don't worry. See the **Debugging** step below, which explains the common errors and how to fix them. Need help debugging the status banner? `⚠ Set your IP address and library (step 0.3)` — neither your IP nor library has been set up yet. `⚠ Set your library (step 0.3)` — your IP is saved, but you haven't clicked **Select** on your library row. `Student 1 · FLGHT401 :3001 · ⚠ Set your IP address (step 0.3)` — your library is selected, but your IP address is missing. `✅ Student 1 · FLGHT401 :3001` — all set! The green check mark appears, warnings disappear, and your guide is ready. Want to switch or change your current library? This should only be done if you accidentally clicked the wrong library or if the instructor reassigned you to a different library number. To switch, click the **Switch Library** button located to the right of `✅ Active Library: FLGHT4nn (Student #nn) | Dev Port: 30nn`. This will expand all library rows while keeping your currently selected library highlighted. Simply click **Select** on your new library number and confirm the switch.
 
 ---
 
-## 0.4 — Connect Bob IDE to IBM i
+## 0.4 — Save and Prepare Your Private Key
 
-1. **Add a new connection** — Click the IBM i icon in the Activity Bar (indicated by the red arrow in the screenshot below), then click **New Connection**. Enter the host IP `<myIPaddress>`, the user profile `ITZUSER`, and the `ae_primary_key.pem` private key file your instructor shared with you. When prompted for the private key, browse to the saved `ae_primary_key.pem` file on your computer. **Do not use the password here — use only the `ae_primary_key.pem` private key file.**
+Your instructor has sent you a zip file. Double-click it to open it. When it asks for a password, enter the password your instructor gives you. After you enter it, you will see a **.pem key file**. Save it somewhere you can find it, because you will use this private key to connect Bob to IBM i.
+
+1. **Extract the encrypted private key archive** — Your instructor has provided a password-protected zip file containing your private key. Double-click the zip file, and you will be prompted to enter a password. Enter the password your instructor gives you. This should leave you with the `ae_primary_key.pem` file, which is the private key you will use to connect to your IBM i server for today's lab.
+
+   > 💡 **Tip:** Keep `ae_primary_key.pem` in a known folder on your computer (such as your **Downloads** folder) so you can easily browse to it when connecting.
+
+2. **Tighten private key permissions** — Open your terminal or command prompt. You **must be in the directory / folder where you have the key saved**. If you just downloaded it, odds are it is in your Downloads folder, so `cd` to Downloads first:
+
+   **macOS / Linux** — in **Terminal**, navigate to your Downloads folder:
+
+   ```
+   cd ~/Downloads
+   ```
+
+   In the terminal, tighten the permissions on the SSH private key so it can be used for authentication. Copy and paste the following command, then press **Enter**:
+
+   ```
+   chmod 600 ae_primary_key.pem
+   ```
+
+   **Windows** — in **PowerShell**, navigate to your Downloads folder:
+
+   ```
+   cd $HOME\Downloads
+   ```
+
+   In the terminal, tighten the permissions on the SSH private key so it can be used for authentication. Copy and paste the following command, then press **Enter** (run PowerShell as Administrator if the command fails):
+
+   ```
+   icacls ae_primary_key.pem /inheritance:r /grant:r "$($env:USERNAME):R"
+   ```
+
+   > 💡 **Why this matters:** SSH will refuse to use a private key that is readable by other users on the system. `chmod 600` (and the equivalent `icacls` rule on Windows) restricts read and write access to only your user account, satisfying SSH's security check.
+
+---
+
+## 0.5 — Connect Bob IDE to IBM i
+
+1. **Add a new connection** — Click the IBM i icon in the Activity Bar (indicated by the red arrow in the screenshot below), then click **New Connection**. Enter the host IP `<myIPaddress>`, the user profile `ITZUSER`, and select the `ae_primary_key.pem` private key file you prepared in step 0.4. When prompted for the private key, browse to where you saved `ae_primary_key.pem` on your computer. **Do not use a password here — use only the `ae_primary_key.pem` private key file.**
 
    ![IBM i icon in the Bob Activity Bar](img/ibmi_icon.png)
 
@@ -153,7 +231,7 @@ Your instructor will give you the IP address of your server. Wherever this guide
 
    *IBM i connection panel*
 
-   > 💡 If you get a private key error when connecting, see **0.5** for instructions on setting the correct file permissions on `ae_primary_key.pem`.
+   > 💡 **Connection tip:** If the connection times out or drops on your first attempt, wait 15–30 seconds and click connect again. When many participants authenticate at the same moment, the server queues incoming connections.
 
 2. **Add your assigned library to the User Library List** — In the Code for IBM i extension (arrow in the picture below), navigate to the **User Library List** section and click the **+** icon. An input field will pop up at the top of the screen — type `FLGHT4nn` and press **Enter**. You'll then see your library added to the list. Remember: **no "I"** — it's `FLGHT`, not `FLIGHT`.
 
@@ -164,8 +242,6 @@ Your instructor will give you the IP address of your server. Wherever this guide
    ![Input field prompting for library name](img/add-library-name.png)
 
    *Type FLGHT4nn and press Enter to add your library*
-
-   > ✅ If you have a 5250 terminal, you can also add the library with: `ADDLIBLE FLGHT4nn` and launch the app with: `GO FLGHT4nn/FRSMAIN`
 
 3. **Add your assigned library to the Object Browser** — While still in the Code for IBM i extension, go to the **Object Browser** section and click the funnel icon or the **Create new filter** button.
 
@@ -194,25 +270,3 @@ Your instructor will give you the IP address of your server. Wherever this guide
    ![Library List scope selected in the Bob chat](img/librarylist.png)
 
    *Verify the chat scope shows Library List*
-
----
-
-## 0.5 — Set Private Key Permissions
-
-Save the private key file your instructor shared with you and set its permissions so OpenSSH will accept it. You need this to connect Bob to IBM i in 0.4 and to open the SSH tunnel in Exercise 4.
-
-1. **Save your private key and set its permissions** — Save the private key file your instructor shared with you to a folder on your computer, then set its permissions so OpenSSH will accept it.
-
-   **macOS / Linux** — run in **Terminal**:
-
-   ```
-   chmod 600 ae_primary_key.pem
-   ```
-
-   **Windows** — run in **PowerShell** (run as Administrator if the command fails):
-
-   ```
-   icacls ae_primary_key.pem /inheritance:r /grant:r "$($env:USERNAME):R"
-   ```
-
-   This removes inherited permissions and grants only your user read access — required by OpenSSH on Windows.

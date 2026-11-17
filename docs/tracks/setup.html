@@ -102,10 +102,11 @@
                 <div class="step-num">2</div>
                 <div class="step-body">
                   <div class="step-title">Verify IBM Bob Premium Package for i</div>
-                  <div class="step-desc">Search for <strong>"IBM Bob Premium"</strong>. If <strong>IBM Bob Premium Package for i</strong> (publisher: IBM) appears with an <strong>Install</strong> button on the right, click <strong>Install</strong> now. If there is no <strong>Install</strong> button, you're all set — skip to step 3. This package includes Code for IBM i (source editing, object browser, IFS browser, Db2 for i, and more).</div>
+                  <div class="step-desc">Search for <strong>"IBM Bob Premium Package for i"</strong>. If <strong>IBM Bob Premium Package for i</strong> (publisher: IBM) appears with an <strong>Install</strong> button on the right, click <strong>Install</strong> now. If there is no <strong>Install</strong> button, you're all set — skip to step 3. This package includes Code for IBM i (source editing, object browser, IFS browser, Db2 for i, and more).</div>
+                  <div class="info-box">💡 <strong>What is IBM Bob Premium Package for i?</strong><br/>IBM Bob is an AI coding assistant, a lot like having a smart helper sitting next to you while you code. By default, Bob only works on files on your PC. The Premium Package for i is the add-on that connects Bob directly to your IBM i. Bob can then read, explain, edit, and test your RPG, CL, and SQL right where it lives. You don’t export it, edit it, and copy it back. It also comes with the Code for IBM i tools you already know.</div>
                   <div class="step-screenshot">
-                    <img src="img/searching-ibm-i.png" alt="Searching for IBM Bob Premium in the Extensions panel"/>
-                    <div class="step-screenshot-caption">Search for "IBM Bob Premium" — an Install button on the right means it still needs to be installed</div>
+                    <img src="img/searching-ibm-i.png" alt="Searching for IBM Bob Premium Package for i in the Extensions panel"/>
+                    <div class="step-screenshot-caption">Search for "IBM Bob Premium Package for i" — an Install button on the right means it still needs to be installed</div>
                   </div>
                 </div>
               </div>
@@ -114,6 +115,7 @@
                 <div class="step-body">
                   <div class="step-title">Install IBM i Development Pack</div>
                   <div class="step-desc">Just like the previous step, search for <strong>"IBM i Development Pack"</strong> in the Extensions panel. This extension is <strong>not</strong> pre-installed — click <strong>Install</strong> if it does not appear under <em>Installed</em>. Reload Bob if prompted.</div>
+                  <div class="info-box">💡 <strong>What is the IBM i Development Pack?</strong><br/>The IBM i Development Pack adds all the IBM i tools to Bob in one install, so Bob can use them. That includes the connection to your system and the editing and database tools for RPG, CL, COBOL, and SQL. Think of it as the toolbox, and Bob is the AI helper that uses it.</div>
                 </div>
               </div>
               <div class="mode-step">
@@ -131,7 +133,7 @@
                 <div class="step-num">5</div>
                 <div class="step-body">
                   <div class="step-title">Install Premium Package for i</div>
-                  <div class="step-desc">Further down the panel, next to the <strong>Add ons</strong> setting, you should see IBM Bob Premium Package for i. Click <strong>Install</strong>. Bob may ask you to restart the IDE — if so, accept and restart.</div>
+                  <div class="step-desc">Further down the panel, next to the <strong>Add ons</strong> setting, you should see "IBM Bob Premium Package for i" displayed. Click <strong>Install</strong>, this might seem redundant but it is a required activation within Settings to fully connect the Premium Package. After its done downloading, Bob may ask you to restart the IDE — if so, accept and restart.</div>
                   <div class="step-screenshot">
                     <img src="img/activatedd.png" alt="IBM Bob Premium Package for i shown next to the Add ons setting with an Install button"/>
                     <div class="step-screenshot-caption">Click Install next to IBM Bob Premium Package for i under Add ons</div>
@@ -148,9 +150,38 @@
                     <div class="step-screenshot-caption">Click the icon in the top-right corner to return to the Bob chat</div>
                   </div>
                   <div class="step-screenshot">
-                    <img src="img/new-modes.png" alt="IBM i Developer and IBM i Database modes in the mode selector"/>
+                    <img src="img/updated-new-modes.png" alt="IBM i Developer and IBM i Database modes in the mode selector"/>
                     <div class="step-screenshot-caption">IBM i Developer and IBM i Database appear in the mode list</div>
                   </div>
+                </div>
+              </div>
+              <div class="mode-step">
+                <div class="step-num">7</div>
+                <div class="step-body">
+                  <div class="step-title">Understanding Bob Modes</div>
+                  <div class="step-desc">A mode is like a job description for Bob. It tells Bob two things: how to act (its role and expertise), and what it is allowed to touch (its permissions). Switching modes is like giving the same assistant a different job.</div>
+                  <div class="step-desc"><strong>Bob comes with 3 default modes:</strong></div>
+                  
+                  <div class="step-desc mt-s mb-s"><strong>1) Agent Mode</strong></div>
+                  <div class="info-box mb-s" style="margin-top: 0;"><strong>Role (the doer):</strong> Turns an idea or plan into working code. Use it to write, change, or refactor code, implement features, and fix bugs.<br/><strong>Permissions:</strong> Broadest. It can read, edit, and run commands.</div>
+
+                  <div class="step-desc mt-s mb-s"><strong>2) Plan Mode</strong></div>
+                  <div class="info-box mb-s" style="margin-top: 0;"><strong>Role (the architect):</strong> Analyzes requirements and designs the steps before any code is written.<br/><strong>Permissions:</strong> It can read, but it can only edit Markdown and text files — <strong>meaning it cannot edit any coding files</strong>. It can write a plan, but it cannot change your code.</div>
+
+                  <div class="step-desc mt-s mb-s"><strong>3) Ask Mode</strong></div>
+                  <div class="info-box mb-s" style="margin-top: 0;"><strong>Role (the explainer):</strong> Answers questions and explains code without making changes.<br/><strong>Permissions:</strong> Read only.</div>
+
+                  <div class="info-box mb-m">💡 <strong>Tip:</strong> Want to understand code? Use <strong>Ask</strong>. Want a plan first? Use <strong>Plan</strong>. Ready to build? Switch to <strong>Agent</strong>.</div>
+
+                  <div class="step-desc mt-m"><strong>IBM i specific modes:</strong> The IBM Bob Premium Package for i adds two IBM i specialist modes. They already know IBM i terms and best practices, so you don't have to explain the platform to Bob. At the start of each task, Bob automatically receives your connection details, OS version, CCSID settings, and library lists.</div>
+
+                  <div class="step-desc mt-s mb-s"><strong>1) IBM i Developer Mode</strong></div>
+                  <div class="info-box mb-s" style="margin-top: 0;"><strong>Role (the IBM i programmer):</strong> Explains, generates, compiles, tests, and documents code on IBM i. It works with RPG (OPM and ILE), SQL on Db2 for i, CL, DDS, and COBOL.<br/><strong>Typical tasks:</strong> Explain or document program logic, write or refactor source code, compile objects, generate and fix RPG unit tests, plan modernization, convert fixed-format RPG to free-format.<br/><strong>Permissions:</strong> Read, edit, execute, MCP, todo, subtask, and skill.</div>
+
+                  <div class="step-desc mt-s mb-s"><strong>2) IBM i Database Mode</strong></div>
+                  <div class="info-box mb-s" style="margin-top: 0;"><strong>Role (the Db2 for i specialist):</strong> Generates, modernizes, tunes, and reviews SQL on Db2 for i. It checks for correctness, performance, security, and IBM i best practices. It also helps you understand complex database schemas and analyze query performance and indexes.<br/><strong>Permissions:</strong> The same as IBM i Developer, except it does not include MCP.</div>
+
+                  <div class="info-box">💡 <strong>Tip:</strong> Use <strong>IBM i Developer</strong> for code work. Use <strong>IBM i Database</strong> for SQL and schema work.</div>
                 </div>
               </div>
             </div>
@@ -165,90 +196,186 @@
           </div>
           <div class="uc-body"><div class="uc-body-inner">
             <div class="mode-steps">
+              <!-- Sub-step 1: Find IP and library assignment -->
               <div class="mode-step">
                 <div class="step-num">1</div>
                 <div class="step-body">
-                  <div class="step-desc">Your instructor will assign you a library number. Each participant has their own copy of the FLIGHT400 application in a library named <strong>FLGHT4nn</strong> (e.g. FLGHT401, FLGHT402). Use only your assigned number throughout the exercises so everyone can work independently.</div>
-                  <div class="warn-box"><strong>Action required (2 things):</strong> (1) <strong>paste the IP address</strong> your instructor gave you into the box, and (2) in the table below, <strong>click the row with your assigned library number</strong>. You only do this once. The IP address, library name, dev port, and prompts throughout this guide update to match.</div>
+                  <div class="step-title">Find your assigned IP address and library number</div>
+                  <div class="step-desc">Your instructor will share the server IP address with you and display a spreadsheet assigning each participant a library number. Each participant has their own copy of the FLIGHT400 application in an isolated library named <strong>FLGHT4nn</strong> (e.g. FLGHT401, FLGHT402). Use only your assigned number throughout the lab so everyone can work independently without overwriting each other.</div>
+                  <div class="info-box">💡 <strong>Spelling note:</strong> The library name is <code>FLGHT4nn</code> — note there is <strong>no "I"</strong> in FLGHT. Your instructor may say "Flight 4-nn" verbally, but when typing always use <code>FLGHT4nn</code> (F‑L‑G‑H‑T).</div>
+                </div>
+              </div>
+
+              <!-- Sub-step 2: Enter IP address -->
+              <div class="mode-step">
+                <div class="step-num">2</div>
+                <div class="step-body">
+                  <div class="step-title">Type in the IP address from your instructor</div>
+                  <div class="step-desc">Paste or type the IP address provided by your instructor into the box below. You only do this once — all connection settings and prompts across this guide will update to match.</div>
                   <div class="server-ip-field">
                     <label for="server-ip">IP address of your server (from your instructor)</label>
                     <input type="text" id="server-ip" inputmode="decimal" autocomplete="off" spellcheck="false" maxlength="15" placeholder="paste the IP address here" aria-describedby="server-ip-msg" />
                     <div class="server-ip-msg" id="server-ip-msg" role="status" aria-live="polite"></div>
+                    <div class="ip-status-badge hidden" id="server-ip-status" role="status"></div>
                   </div>
-                  <div class="info-box">💡 <strong>Spelling note:</strong> The library name is <code>FLGHT4nn</code> — note there is <strong>no "I"</strong> in FLGHT. Your instructor may say "Flight 4-nn" verbally, but when typing always use <code>FLGHT4nn</code> (F‑L‑G‑H‑T).</div>
+                </div>
+              </div>
+
+              <!-- Sub-step 3: Select library number -->
+              <div class="mode-step">
+                <div class="step-num">3</div>
+                <div class="step-body">
+                  <div class="step-title">Select your assigned library number</div>
+                  <div class="step-desc">Find your assigned Student # in the table below and click the <strong>Select</strong> button. A quick confirmation pop-up will appear to verify your choice. Once confirmed, all commands, library names, dev ports, and prompts throughout the guide will automatically update to match your number.</div>
+                  <div class="library-status-badge hidden" id="active-library-status" role="status"></div>
                   <table class="data-table" id="attendee-table">
                     <thead>
                       <tr>
                         <th style="text-align:center">Student #</th>
+                        <th style="text-align:center">Select</th>
                         <th>Library</th>
                         <th style="text-align:center">Dev Port</th>
                         <th>React App URL</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr><td style="text-align:center">1</td><td><code>FLGHT401</code></td><td style="text-align:center">3001</td><td><code>http://localhost:3001</code></td></tr>
-                      <tr><td style="text-align:center">2</td><td><code>FLGHT402</code></td><td style="text-align:center">3002</td><td><code>http://localhost:3002</code></td></tr>
-                      <tr><td style="text-align:center">3</td><td><code>FLGHT403</code></td><td style="text-align:center">3003</td><td><code>http://localhost:3003</code></td></tr>
-                      <tr><td style="text-align:center">4</td><td><code>FLGHT404</code></td><td style="text-align:center">3004</td><td><code>http://localhost:3004</code></td></tr>
-                      <tr><td style="text-align:center">5</td><td><code>FLGHT405</code></td><td style="text-align:center">3005</td><td><code>http://localhost:3005</code></td></tr>
-                      <tr><td style="text-align:center">6</td><td><code>FLGHT406</code></td><td style="text-align:center">3006</td><td><code>http://localhost:3006</code></td></tr>
-                      <tr><td style="text-align:center">7</td><td><code>FLGHT407</code></td><td style="text-align:center">3007</td><td><code>http://localhost:3007</code></td></tr>
-                      <tr><td style="text-align:center">8</td><td><code>FLGHT408</code></td><td style="text-align:center">3008</td><td><code>http://localhost:3008</code></td></tr>
-                      <tr><td style="text-align:center">9</td><td><code>FLGHT409</code></td><td style="text-align:center">3009</td><td><code>http://localhost:3009</code></td></tr>
-                      <tr><td style="text-align:center">10</td><td><code>FLGHT410</code></td><td style="text-align:center">3010</td><td><code>http://localhost:3010</code></td></tr>
-                      <tr><td style="text-align:center">11</td><td><code>FLGHT411</code></td><td style="text-align:center">3011</td><td><code>http://localhost:3011</code></td></tr>
-                      <tr><td style="text-align:center">12</td><td><code>FLGHT412</code></td><td style="text-align:center">3012</td><td><code>http://localhost:3012</code></td></tr>
-                      <tr><td style="text-align:center">13</td><td><code>FLGHT413</code></td><td style="text-align:center">3013</td><td><code>http://localhost:3013</code></td></tr>
-                      <tr><td style="text-align:center">14</td><td><code>FLGHT414</code></td><td style="text-align:center">3014</td><td><code>http://localhost:3014</code></td></tr>
-                      <tr><td style="text-align:center">15</td><td><code>FLGHT415</code></td><td style="text-align:center">3015</td><td><code>http://localhost:3015</code></td></tr>
-                      <tr><td style="text-align:center">16</td><td><code>FLGHT416</code></td><td style="text-align:center">3016</td><td><code>http://localhost:3016</code></td></tr>
-                      <tr><td style="text-align:center">17</td><td><code>FLGHT417</code></td><td style="text-align:center">3017</td><td><code>http://localhost:3017</code></td></tr>
-                      <tr><td style="text-align:center">18</td><td><code>FLGHT418</code></td><td style="text-align:center">3018</td><td><code>http://localhost:3018</code></td></tr>
-                      <tr><td style="text-align:center">19</td><td><code>FLGHT419</code></td><td style="text-align:center">3019</td><td><code>http://localhost:3019</code></td></tr>
-                      <tr><td style="text-align:center">20</td><td><code>FLGHT420</code></td><td style="text-align:center">3020</td><td><code>http://localhost:3020</code></td></tr>
-                      <tr><td style="text-align:center">21</td><td><code>FLGHT421</code></td><td style="text-align:center">3021</td><td><code>http://localhost:3021</code></td></tr>
-                      <tr><td style="text-align:center">22</td><td><code>FLGHT422</code></td><td style="text-align:center">3022</td><td><code>http://localhost:3022</code></td></tr>
-                      <tr><td style="text-align:center">23</td><td><code>FLGHT423</code></td><td style="text-align:center">3023</td><td><code>http://localhost:3023</code></td></tr>
-                      <tr><td style="text-align:center">24</td><td><code>FLGHT424</code></td><td style="text-align:center">3024</td><td><code>http://localhost:3024</code></td></tr>
-                      <tr><td style="text-align:center">25</td><td><code>FLGHT425</code></td><td style="text-align:center">3025</td><td><code>http://localhost:3025</code></td></tr>
-                      <tr><td style="text-align:center">26</td><td><code>FLGHT426</code></td><td style="text-align:center">3026</td><td><code>http://localhost:3026</code></td></tr>
-                      <tr><td style="text-align:center">27</td><td><code>FLGHT427</code></td><td style="text-align:center">3027</td><td><code>http://localhost:3027</code></td></tr>
-                      <tr><td style="text-align:center">28</td><td><code>FLGHT428</code></td><td style="text-align:center">3028</td><td><code>http://localhost:3028</code></td></tr>
-                      <tr><td style="text-align:center">29</td><td><code>FLGHT429</code></td><td style="text-align:center">3029</td><td><code>http://localhost:3029</code></td></tr>
-                      <tr><td style="text-align:center">30</td><td><code>FLGHT430</code></td><td style="text-align:center">3030</td><td><code>http://localhost:3030</code></td></tr>
-                      <tr><td style="text-align:center">31</td><td><code>FLGHT431</code></td><td style="text-align:center">3031</td><td><code>http://localhost:3031</code></td></tr>
-                      <tr><td style="text-align:center">32</td><td><code>FLGHT432</code></td><td style="text-align:center">3032</td><td><code>http://localhost:3032</code></td></tr>
-                      <tr><td style="text-align:center">33</td><td><code>FLGHT433</code></td><td style="text-align:center">3033</td><td><code>http://localhost:3033</code></td></tr>
-                      <tr><td style="text-align:center">34</td><td><code>FLGHT434</code></td><td style="text-align:center">3034</td><td><code>http://localhost:3034</code></td></tr>
-                      <tr><td style="text-align:center">35</td><td><code>FLGHT435</code></td><td style="text-align:center">3035</td><td><code>http://localhost:3035</code></td></tr>
-                      <tr><td style="text-align:center">36</td><td><code>FLGHT436</code></td><td style="text-align:center">3036</td><td><code>http://localhost:3036</code></td></tr>
-                      <tr><td style="text-align:center">37</td><td><code>FLGHT437</code></td><td style="text-align:center">3037</td><td><code>http://localhost:3037</code></td></tr>
-                      <tr><td style="text-align:center">38</td><td><code>FLGHT438</code></td><td style="text-align:center">3038</td><td><code>http://localhost:3038</code></td></tr>
-                      <tr><td style="text-align:center">39</td><td><code>FLGHT439</code></td><td style="text-align:center">3039</td><td><code>http://localhost:3039</code></td></tr>
-                      <tr><td style="text-align:center">40</td><td><code>FLGHT440</code></td><td style="text-align:center">3040</td><td><code>http://localhost:3040</code></td></tr>
-                      <tr><td style="text-align:center">41</td><td><code>FLGHT441</code></td><td style="text-align:center">3041</td><td><code>http://localhost:3041</code></td></tr>
-                      <tr><td style="text-align:center">42</td><td><code>FLGHT442</code></td><td style="text-align:center">3042</td><td><code>http://localhost:3042</code></td></tr>
-                      <tr><td style="text-align:center">43</td><td><code>FLGHT443</code></td><td style="text-align:center">3043</td><td><code>http://localhost:3043</code></td></tr>
-                      <tr><td style="text-align:center">44</td><td><code>FLGHT444</code></td><td style="text-align:center">3044</td><td><code>http://localhost:3044</code></td></tr>
-                      <tr><td style="text-align:center">45</td><td><code>FLGHT445</code></td><td style="text-align:center">3045</td><td><code>http://localhost:3045</code></td></tr>
-                      <tr><td style="text-align:center">46</td><td><code>FLGHT446</code></td><td style="text-align:center">3046</td><td><code>http://localhost:3046</code></td></tr>
-                      <tr><td style="text-align:center">47</td><td><code>FLGHT447</code></td><td style="text-align:center">3047</td><td><code>http://localhost:3047</code></td></tr>
-                      <tr><td style="text-align:center">48</td><td><code>FLGHT448</code></td><td style="text-align:center">3048</td><td><code>http://localhost:3048</code></td></tr>
-                      <tr><td style="text-align:center">49</td><td><code>FLGHT449</code></td><td style="text-align:center">3049</td><td><code>http://localhost:3049</code></td></tr>
-                      <tr><td style="text-align:center">50</td><td><code>FLGHT450</code></td><td style="text-align:center">3050</td><td><code>http://localhost:3050</code></td></tr>
+                      <tr><td style="text-align:center">1</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT401</code></td><td style="text-align:center">3001</td><td><code>http://localhost:3001</code></td></tr>
+                      <tr><td style="text-align:center">2</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT402</code></td><td style="text-align:center">3002</td><td><code>http://localhost:3002</code></td></tr>
+                      <tr><td style="text-align:center">3</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT403</code></td><td style="text-align:center">3003</td><td><code>http://localhost:3003</code></td></tr>
+                      <tr><td style="text-align:center">4</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT404</code></td><td style="text-align:center">3004</td><td><code>http://localhost:3004</code></td></tr>
+                      <tr><td style="text-align:center">5</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT405</code></td><td style="text-align:center">3005</td><td><code>http://localhost:3005</code></td></tr>
+                      <tr><td style="text-align:center">6</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT406</code></td><td style="text-align:center">3006</td><td><code>http://localhost:3006</code></td></tr>
+                      <tr><td style="text-align:center">7</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT407</code></td><td style="text-align:center">3007</td><td><code>http://localhost:3007</code></td></tr>
+                      <tr><td style="text-align:center">8</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT408</code></td><td style="text-align:center">3008</td><td><code>http://localhost:3008</code></td></tr>
+                      <tr><td style="text-align:center">9</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT409</code></td><td style="text-align:center">3009</td><td><code>http://localhost:3009</code></td></tr>
+                      <tr><td style="text-align:center">10</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT410</code></td><td style="text-align:center">3010</td><td><code>http://localhost:3010</code></td></tr>
+                      <tr><td style="text-align:center">11</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT411</code></td><td style="text-align:center">3011</td><td><code>http://localhost:3011</code></td></tr>
+                      <tr><td style="text-align:center">12</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT412</code></td><td style="text-align:center">3012</td><td><code>http://localhost:3012</code></td></tr>
+                      <tr><td style="text-align:center">13</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT413</code></td><td style="text-align:center">3013</td><td><code>http://localhost:3013</code></td></tr>
+                      <tr><td style="text-align:center">14</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT414</code></td><td style="text-align:center">3014</td><td><code>http://localhost:3014</code></td></tr>
+                      <tr><td style="text-align:center">15</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT415</code></td><td style="text-align:center">3015</td><td><code>http://localhost:3015</code></td></tr>
+                      <tr><td style="text-align:center">16</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT416</code></td><td style="text-align:center">3016</td><td><code>http://localhost:3016</code></td></tr>
+                      <tr><td style="text-align:center">17</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT417</code></td><td style="text-align:center">3017</td><td><code>http://localhost:3017</code></td></tr>
+                      <tr><td style="text-align:center">18</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT418</code></td><td style="text-align:center">3018</td><td><code>http://localhost:3018</code></td></tr>
+                      <tr><td style="text-align:center">19</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT419</code></td><td style="text-align:center">3019</td><td><code>http://localhost:3019</code></td></tr>
+                      <tr><td style="text-align:center">20</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT420</code></td><td style="text-align:center">3020</td><td><code>http://localhost:3020</code></td></tr>
+                      <tr><td style="text-align:center">21</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT421</code></td><td style="text-align:center">3021</td><td><code>http://localhost:3021</code></td></tr>
+                      <tr><td style="text-align:center">22</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT422</code></td><td style="text-align:center">3022</td><td><code>http://localhost:3022</code></td></tr>
+                      <tr><td style="text-align:center">23</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT423</code></td><td style="text-align:center">3023</td><td><code>http://localhost:3023</code></td></tr>
+                      <tr><td style="text-align:center">24</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT424</code></td><td style="text-align:center">3024</td><td><code>http://localhost:3024</code></td></tr>
+                      <tr><td style="text-align:center">25</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT425</code></td><td style="text-align:center">3025</td><td><code>http://localhost:3025</code></td></tr>
+                      <tr><td style="text-align:center">26</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT426</code></td><td style="text-align:center">3026</td><td><code>http://localhost:3026</code></td></tr>
+                      <tr><td style="text-align:center">27</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT427</code></td><td style="text-align:center">3027</td><td><code>http://localhost:3027</code></td></tr>
+                      <tr><td style="text-align:center">28</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT428</code></td><td style="text-align:center">3028</td><td><code>http://localhost:3028</code></td></tr>
+                      <tr><td style="text-align:center">29</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT429</code></td><td style="text-align:center">3029</td><td><code>http://localhost:3029</code></td></tr>
+                      <tr><td style="text-align:center">30</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT430</code></td><td style="text-align:center">3030</td><td><code>http://localhost:3030</code></td></tr>
+                      <tr><td style="text-align:center">31</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT431</code></td><td style="text-align:center">3031</td><td><code>http://localhost:3031</code></td></tr>
+                      <tr><td style="text-align:center">32</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT432</code></td><td style="text-align:center">3032</td><td><code>http://localhost:3032</code></td></tr>
+                      <tr><td style="text-align:center">33</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT433</code></td><td style="text-align:center">3033</td><td><code>http://localhost:3033</code></td></tr>
+                      <tr><td style="text-align:center">34</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT434</code></td><td style="text-align:center">3034</td><td><code>http://localhost:3034</code></td></tr>
+                      <tr><td style="text-align:center">35</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT435</code></td><td style="text-align:center">3035</td><td><code>http://localhost:3035</code></td></tr>
+                      <tr><td style="text-align:center">36</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT436</code></td><td style="text-align:center">3036</td><td><code>http://localhost:3036</code></td></tr>
+                      <tr><td style="text-align:center">37</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT437</code></td><td style="text-align:center">3037</td><td><code>http://localhost:3037</code></td></tr>
+                      <tr><td style="text-align:center">38</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT438</code></td><td style="text-align:center">3038</td><td><code>http://localhost:3038</code></td></tr>
+                      <tr><td style="text-align:center">39</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT439</code></td><td style="text-align:center">3039</td><td><code>http://localhost:3039</code></td></tr>
+                      <tr><td style="text-align:center">40</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT440</code></td><td style="text-align:center">3040</td><td><code>http://localhost:3040</code></td></tr>
+                      <tr><td style="text-align:center">41</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT441</code></td><td style="text-align:center">3041</td><td><code>http://localhost:3041</code></td></tr>
+                      <tr><td style="text-align:center">42</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT442</code></td><td style="text-align:center">3042</td><td><code>http://localhost:3042</code></td></tr>
+                      <tr><td style="text-align:center">43</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT443</code></td><td style="text-align:center">3043</td><td><code>http://localhost:3043</code></td></tr>
+                      <tr><td style="text-align:center">44</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT444</code></td><td style="text-align:center">3044</td><td><code>http://localhost:3044</code></td></tr>
+                      <tr><td style="text-align:center">45</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT445</code></td><td style="text-align:center">3045</td><td><code>http://localhost:3045</code></td></tr>
+                      <tr><td style="text-align:center">46</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT446</code></td><td style="text-align:center">3046</td><td><code>http://localhost:3046</code></td></tr>
+                      <tr><td style="text-align:center">47</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT447</code></td><td style="text-align:center">3047</td><td><code>http://localhost:3047</code></td></tr>
+                      <tr><td style="text-align:center">48</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT448</code></td><td style="text-align:center">3048</td><td><code>http://localhost:3048</code></td></tr>
+                      <tr><td style="text-align:center">49</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT449</code></td><td style="text-align:center">3049</td><td><code>http://localhost:3049</code></td></tr>
+                      <tr><td style="text-align:center">50</td><td style="text-align:center"><button type="button" class="btn-select-row">Select</button></td><td><code>FLGHT450</code></td><td style="text-align:center">3050</td><td><code>http://localhost:3050</code></td></tr>
                     </tbody>
                   </table>
+                  <div class="info-box">💡 <strong>Note:</strong> The <strong>Dev Port</strong> (<code>30nn</code>) is only used later in <strong>Exercise 4</strong> when launching the modernized web application.</div>
+                </div>
+              </div>
+
+              <!-- Sub-step 4: Verify it's working -->
+              <div class="mode-step">
+                <div class="step-num">4</div>
+                <div class="step-body">
+                  <div class="step-title">Verify it is working</div>
+                  <div class="info-box" style="margin-top:0;">
+                    ✅ <strong>Verify your setup</strong><br/><br/>
+                    When setup is complete, you should see a floating status banner in the bottom-right corner of your screen with a green check mark and no warning icon. For example: <code>✅ Student 8 · FLGHT408 :3008</code><br/><br/>
+                    Your numbers will match the library row you selected. If you see a warning icon or anything looks different, don't worry. See the <strong>Debugging</strong> step below, which explains the common errors and how to fix them.
+                    
+                    <details class="skill-details" style="margin-top:10px;">
+                      <summary style="font-size:0.84rem;color:var(--accent);">Need help debugging the status banner?</summary>
+                      <ul style="margin: 8px 0 0 18px; padding: 0; line-height: 1.6;">
+                        <li><code>⚠ Set your IP address and library (step 0.3)</code> — neither your IP nor library has been set up yet.</li>
+                        <li><code>⚠ Set your library (step 0.3)</code> — your IP is saved, but you haven't clicked <strong>Select</strong> on your library row.</li>
+                        <li><code>Student 1 · FLGHT401 :3001 · ⚠ Set your IP address (step 0.3)</code> — your library is selected, but your IP address is missing.</li>
+                        <li><code>✅ Student 1 · FLGHT401 :3001</code> — all set! The green check mark appears, warnings disappear, and your guide is ready.</li>
+                      </ul>
+                    </details>
+
+                    <details class="skill-details" style="margin-top:10px;">
+                      <summary style="font-size:0.84rem;color:var(--accent);">Want to switch or change your current library?</summary>
+                      <div style="margin-top:8px; line-height: 1.6;">
+                        This should only be done if you accidentally clicked the wrong library or if the instructor reassigned you to a different library number.<br/><br/>
+                        To switch, click the <strong>Switch Library</strong> button located to the right of <code>✅ Active Library: FLGHT4nn (Student #nn) | Dev Port: 30nn</code>. This will expand all library rows while keeping your currently selected library highlighted. Simply click <strong>Select</strong> on your new library number and confirm the switch.
+                      </div>
+                    </details>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="info-box">💡 The <strong>Dev Port</strong> is only needed for <strong>Exercise 4</strong>. When Bob asks you to pin your Vite dev server to a port, use your Dev Port. Your React app will be reachable at the React App URL shown — provided your SSH tunnel (Exercise 4, step 4.1.1) is active.</div>
           </div></div>
         </div>
 
-        <!-- Step 4: Connect Bob IDE to IBM i -->
+        <!-- Step 4: Save and Prepare Private Key -->
         <div class="use-case">
           <div class="use-case-header">
-            <div class="uc-title">0.4 — Connect Bob IDE to IBM i</div>
+            <div class="uc-title">0.4 — Save and Prepare Your Private Key</div>
+            <div class="uc-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l5 5 5-5"/></svg></div>
+          </div>
+          <div class="uc-body"><div class="uc-body-inner">
+            <p class="uc-desc">Your instructor has sent you a zip file. Double-click it to open it. When it asks for a password, enter the password your instructor gives you. After you enter it, you will see a <strong>.pem key file</strong>. Save it somewhere you can find it, because you will use this private key to connect Bob to IBM i.</p>
+            <div class="mode-steps">
+              <!-- Sub-step 1: Extract encrypted key archive -->
+              <div class="mode-step">
+                <div class="step-num">1</div>
+                <div class="step-body">
+                  <div class="step-title">Extract the encrypted private key archive</div>
+                  <div class="step-desc">Your instructor has provided a password-protected zip file containing your private key. Double-click the zip file, and you will be prompted to enter a password. Enter the password your instructor gives you. This should leave you with the <code>ae_primary_key.pem</code> file, which is the private key you will use to connect to your IBM i server for today's lab.</div>
+                  <div class="info-box">💡 <strong>Tip:</strong> Keep <code>ae_primary_key.pem</code> in a known folder on your computer (such as your <strong>Downloads</strong> folder) so you can easily browse to it when connecting.</div>
+                </div>
+              </div>
+
+              <!-- Sub-step 2: Set private key permissions -->
+              <div class="mode-step">
+                <div class="step-num">2</div>
+                <div class="step-body">
+                  <div class="step-title">Tighten private key permissions</div>
+                  <div class="step-desc">Open your terminal or command prompt. You <strong>must be in the directory / folder where you have the key saved</strong>. If you just downloaded it, odds are it is in your Downloads folder, so <code>cd</code> to Downloads first:</div>
+                  
+                  <div class="step-desc mt-m"><strong>macOS / Linux</strong> — in <strong>Terminal</strong>, navigate to your Downloads folder:</div>
+                  <div class="step-prompt"><pre>cd ~/Downloads</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+                  <div class="step-desc mt-s">In the terminal, tighten the permissions on the SSH private key so it can be used for authentication. Copy and paste the following command, then press <strong>Enter</strong>:</div>
+                  <div class="step-prompt"><pre>chmod 600 ae_primary_key.pem</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+
+                  <div class="step-desc mt-m"><strong>Windows</strong> — in <strong>PowerShell</strong>, navigate to your Downloads folder:</div>
+                  <div class="step-prompt"><pre>cd $HOME\Downloads</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+                  <div class="step-desc mt-s">In the terminal, tighten the permissions on the SSH private key so it can be used for authentication. Copy and paste the following command, then press <strong>Enter</strong> (run PowerShell as Administrator if the command fails):</div>
+                  <div class="step-prompt"><pre>icacls ae_primary_key.pem /inheritance:r /grant:r "$($env:USERNAME):R"</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+
+                  <div class="info-box mt-m">💡 <strong>Why this matters:</strong> SSH will refuse to use a private key that is readable by other users on the system. <code>chmod 600</code> (and the equivalent <code>icacls</code> rule on Windows) restricts read and write access to only your user account, satisfying SSH's security check.</div>
+                </div>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <!-- Step 5: Connect Bob IDE to IBM i -->
+        <div class="use-case">
+          <div class="use-case-header">
+            <div class="uc-title">0.5 — Connect Bob IDE to IBM i</div>
             <div class="uc-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l5 5 5-5"/></svg></div>
           </div>
           <div class="uc-body"><div class="uc-body-inner">
@@ -257,7 +384,7 @@
                 <div class="step-num">1</div>
                 <div class="step-body">
                   <div class="step-title">Add a new connection</div>
-                  <div class="step-desc">Click the IBM i icon in the Activity Bar (indicated by the red arrow in the screenshot below), then click <strong>New Connection</strong>. Enter the host IP <code>&lt;myIPaddress&gt;</code>, the user profile <code>ITZUSER</code>, and the <code>ae_primary_key.pem</code> private key file your instructor shared with you. When prompted for the private key, browse to the saved <code>ae_primary_key.pem</code> file on your computer. <strong>Do not use the password here — use only the <code>ae_primary_key.pem</code> private key file.</strong></div>
+                  <div class="step-desc">Click the IBM i icon in the Activity Bar (indicated by the red arrow in the screenshot below), then click <strong>New Connection</strong>. Enter the host IP <code>&lt;myIPaddress&gt;</code>, the user profile <code>ITZUSER</code>, and select the <code>ae_primary_key.pem</code> private key file you prepared in step 0.4. When prompted for the private key, browse to where you saved <code>ae_primary_key.pem</code> on your computer. <strong>Do not use a password here — use only the <code>ae_primary_key.pem</code> private key file.</strong></div>
                   <div class="step-screenshot">
                     <img src="img/ibmi_icon.png" alt="IBM i icon in the Bob Activity Bar"/>
                     <div class="step-screenshot-caption">Click the IBM i icon in the Activity Bar</div>
@@ -266,7 +393,7 @@
                     <img src="img/i-connection.png" alt="IBM i connection dialog in Bob IDE"/>
                     <div class="step-screenshot-caption">IBM i connection panel</div>
                   </div>
-                  <div class="info-box">💡 If you get a private key error when connecting, see <strong>0.5</strong> for instructions on setting the correct file permissions on <code>ae_primary_key.pem</code>.</div>
+                  <div class="info-box">💡 <strong>Connection tip:</strong> If the connection times out or drops on your first attempt, wait 15–30 seconds and click connect again. When many participants authenticate at the same moment, the server queues incoming connections.</div>
                 </div>
               </div>
               <div class="mode-step">
@@ -282,7 +409,6 @@
                     <img src="img/add-library-name.png" alt="Input field prompting for library name"/>
                     <div class="step-screenshot-caption">Type FLGHT4nn and press Enter to add your library</div>
                   </div>
-                  <div class="info-box">✅ If you have a 5250 terminal, you can also add the library with: <code>ADDLIBLE FLGHT4nn</code> and launch the app with: <code>GO FLGHT4nn/FRSMAIN</code></div>
                 </div>
               </div>
 
@@ -319,31 +445,6 @@
                     <img src="img/librarylist.png" alt="Library List scope selected in the Bob chat"/>
                     <div class="step-screenshot-caption">Verify the chat scope shows Library List</div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div></div>
-        </div>
-
-        <!-- Step 5: Private key permissions -->
-        <div class="use-case">
-          <div class="use-case-header">
-            <div class="uc-title">0.5 — Set Private Key Permissions</div>
-            <div class="uc-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l5 5 5-5"/></svg></div>
-          </div>
-          <div class="uc-body"><div class="uc-body-inner">
-            <p class="uc-desc">Save the private key file your instructor shared with you and set its permissions so OpenSSH will accept it. You need this to connect Bob to IBM i in 0.4 and to open the SSH tunnel in Exercise 4.</p>
-            <div class="mode-steps">
-              <div class="mode-step">
-                <div class="step-num">1</div>
-                <div class="step-body">
-                  <div class="step-title">Save your private key and set its permissions</div>
-                  <div class="step-desc">Save the private key file your instructor shared with you to a folder on your computer, then set its permissions so OpenSSH will accept it.</div>
-                  <div class="step-desc"><strong>macOS / Linux</strong> — run in <strong>Terminal</strong>:</div>
-                  <div class="step-prompt"><pre>chmod 600 ae_primary_key.pem</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
-                  <div class="step-desc mt-m"><strong>Windows</strong> — run in <strong>PowerShell</strong> (run as Administrator if the command fails):</div>
-                  <div class="step-prompt"><pre>icacls ae_primary_key.pem /inheritance:r /grant:r "$($env:USERNAME):R"</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
-                  <div class="step-desc">This removes inherited permissions and grants only your user read access — required by OpenSSH on Windows.</div>
                 </div>
               </div>
             </div>

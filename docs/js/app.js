@@ -314,10 +314,14 @@
       var pre = box ? box.querySelector('pre') : null;
       var text = pre ? pre.textContent : '';
       if (!text) return;
+      if (!badgeStudent || !ipVal) {
+        var missingPart = (!badgeStudent && !ipVal) ? 'library number and IP address' : (!badgeStudent ? 'library number' : 'IP address');
+        showPromptToast('⚠️ Note: You have not set your ' + missingPart + ' yet! Set it in Step 0.3 to auto-fill this prompt.');
+      }
       fallbackCopy(text, btn);
     });
 
-    // Attendee table row selection
+    // Attendee table row selection — triggers confirmation modal
     var attendeeTable = document.getElementById('attendee-table');
     if (attendeeTable) {
       attendeeTable.addEventListener('click', function (e) {
@@ -332,12 +336,27 @@
           var libNum = parseInt(cfgRow.library.replace(/[^0-9]/g, ''), 10);
           var port   = cfgRow.devPort;
           var name   = cfgRow.attendeeName || null;
-          selectStudentExplicit(num, libNum, port, name);
+          openStudentConfirmModal(num, libNum, port, name);
         } else {
-          selectStudent(num);
+          var defaultLibNum = 400 + num;
+          var defaultPort = 3000 + num;
+          openStudentConfirmModal(num, defaultLibNum, defaultPort, null);
         }
       });
     }
+
+    // Switch Library button inside active status banner
+    document.addEventListener('click', function (e) {
+      if (e.target && e.target.id === 'btn-switch-lib') {
+        var table = document.getElementById('attendee-table');
+        if (table) {
+          table.querySelectorAll('tbody tr').forEach(function (row) {
+            row.style.display = '';
+          });
+          table.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    });
 
     // IP address box (step 0.3): validate on every keystroke, show a message on blur
     document.addEventListener('input',  function (e) { if (e.target && e.target.id === 'server-ip') setIpFromInput(e.target.value, false); });
@@ -372,12 +391,37 @@
   var ipVal        = null;   // validated IPv4 string once pasted in step 0.3
   var badgeStudent = null;   // { num, libNum, port, name } for the badge
 
+  function updateIpStatusBadge(ip) {
+    var badge = document.getElementById('server-ip-status');
+    if (!badge) return;
+    if (ip) {
+      badge.textContent = '✓ IP Address Set: ' + ip + ' (All prompts across the guide have been updated)';
+      badge.classList.remove('hidden');
+    } else {
+      badge.classList.add('hidden');
+    }
+  }
+
+  function updateActiveLibraryBanner(num, libNum, port) {
+    var banner = document.getElementById('active-library-status');
+    if (!banner) return;
+    if (num && libNum) {
+      banner.innerHTML =
+        '<span>✅ <strong>Active Library:</strong> <code>FLGHT' + libNum + '</code> (Student #' + num + ') &nbsp;|&nbsp; Dev Port: <code>' + port + '</code></span>' +
+        '<button type="button" class="btn-switch-lib" id="btn-switch-lib">↺ Switch Library</button>';
+      banner.classList.remove('hidden');
+    } else {
+      banner.classList.add('hidden');
+    }
+  }
+
   function restoreServerSelection() {
     var ip = null;
     try { ip = localStorage.getItem(IP_KEY); } catch (e) {}
     if (ip && IPV4_RE.test(ip)) {
       ipVal = ip;
       document.querySelectorAll('#server-ip').forEach(function (el) { el.value = ip; });
+      updateIpStatusBadge(ip);
     }
     if (!ipVal) return;
     applyAllReplacements();
@@ -393,9 +437,11 @@
     if (ok) {
       ipVal = v;
       try { localStorage.setItem(IP_KEY, v); } catch (e) {}
+      updateIpStatusBadge(v);
     } else if (ipVal !== null) {
       ipVal = null;
       try { localStorage.removeItem(IP_KEY); } catch (e) {}
+      updateIpStatusBadge(null);
     }
     if (msg) {
       msg.textContent = (!ok && v && showMsg) ? 'Enter a valid IP address: four numbers from 0 to 255 separated by dots.' : '';
@@ -416,6 +462,7 @@
     applyStudentReplacements(num, nn, libNum, port);
     highlightSelectedRow(num);
     updateStudentBadge(num, libNum, port, null);
+    updateActiveLibraryBanner(num, libNum, port);
   }
 
   function selectStudentExplicit(num, libNum, port, name) {
@@ -424,6 +471,7 @@
     applyStudentReplacements(num, nn, libNum, port);
     highlightSelectedRow(num);
     updateStudentBadge(num, libNum, port, name);
+    updateActiveLibraryBanner(num, libNum, port);
   }
 
   function restoreStudentSelection() {
@@ -438,6 +486,97 @@
     applyStudentReplacements(num, nn, libNum, port);
     highlightSelectedRow(num);
     updateStudentBadge(num, libNum, port, name);
+    updateActiveLibraryBanner(num, libNum, port);
+  }
+
+  // ── CONFIRMATION MODAL & PROMPT TOAST ────────────────────────────────────
+  var confirmOverlay = null;
+  var promptToastEl = null;
+
+  function ensureConfirmModal() {
+    if (confirmOverlay) return;
+    confirmOverlay = document.createElement('div');
+    confirmOverlay.className = 'student-confirm-overlay';
+    confirmOverlay.setAttribute('role', 'dialog');
+    confirmOverlay.setAttribute('aria-modal', 'true');
+    confirmOverlay.innerHTML =
+      '<div class="student-confirm-modal">' +
+        '<div class="student-confirm-header">' +
+          '<div class="student-confirm-title">✈️ Confirm Your Library Selection</div>' +
+        '</div>' +
+        '<div class="student-confirm-body">' +
+          '<div class="student-confirm-target" id="modal-target-summary"></div>' +
+          '<div class="warn-box" style="margin-top:0;margin-bottom:14px;background:rgba(240,171,0,0.1);border-color:rgba(240,171,0,0.4);">' +
+            '📋 <strong>Check the instructor\'s spreadsheet:</strong><br/>' +
+            'Look at the spreadsheet being shared on screen to confirm that your name is assigned to this Student #.' +
+          '</div>' +
+          '<div class="student-confirm-points">' +
+            '<div class="student-confirm-point">' +
+              '<span class="student-confirm-point-icon">⚡</span>' +
+              '<div><strong>Auto-updating guide:</strong> All commands, library names, and code prompts across this entire lab will automatically update to your library number so you don\'t have to edit commands yourself!</div>' +
+            '</div>' +
+            '<div class="student-confirm-point">' +
+              '<span class="student-confirm-point-icon">📍</span>' +
+              '<div><strong>Status banner:</strong> Look at the floating pill in the bottom-right corner anytime to confirm what is currently set up.</div>' +
+            '</div>' +
+            '<div class="student-confirm-point">' +
+              '<span class="student-confirm-point-icon">⚠️</span>' +
+              '<div><strong>Picked the wrong one?</strong> Click <strong>Cancel / Pick Different</strong> below. Continuing with the wrong library could overwrite someone else\'s code!</div>' +
+            '</div>' +
+          '</div>' +
+          '<div class="student-confirm-actions">' +
+            '<button type="button" class="student-confirm-btn student-confirm-btn-secondary" id="modal-cancel-btn">Cancel / Pick Different</button>' +
+            '<button type="button" class="student-confirm-btn student-confirm-btn-primary" id="modal-confirm-btn">✓ Confirm Selection</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(confirmOverlay);
+  }
+
+  function openStudentConfirmModal(num, libNum, port, name) {
+    ensureConfirmModal();
+    var summaryEl = document.getElementById('modal-target-summary');
+    var displayName = name ? '<strong>' + name + '</strong> (Student #' + num + ')' : 'Student #' + num;
+    summaryEl.innerHTML =
+      '<div>You selected: ' + displayName + '</div>' +
+      '<div class="lib-num">FLGHT' + libNum + ' &nbsp;·&nbsp; Dev Port: ' + port + '</div>';
+
+    var confirmBtn = document.getElementById('modal-confirm-btn');
+    var cancelBtn = document.getElementById('modal-cancel-btn');
+
+    confirmBtn.onclick = function () {
+      if (name) {
+        selectStudentExplicit(num, libNum, port, name);
+      } else {
+        selectStudent(num);
+      }
+      confirmOverlay.classList.remove('active');
+    };
+
+    cancelBtn.onclick = function () {
+      confirmOverlay.classList.remove('active');
+    };
+
+    confirmOverlay.onclick = function (e) {
+      if (e.target === confirmOverlay) {
+        confirmOverlay.classList.remove('active');
+      }
+    };
+
+    confirmOverlay.classList.add('active');
+  }
+
+  function showPromptToast(msg) {
+    if (!promptToastEl) {
+      promptToastEl = document.createElement('div');
+      promptToastEl.className = 'prompt-toast';
+      document.body.appendChild(promptToastEl);
+    }
+    promptToastEl.textContent = msg;
+    promptToastEl.classList.add('toast-active');
+    setTimeout(function () {
+      promptToastEl.classList.remove('toast-active');
+    }, 4000);
   }
 
   function clearStudent() {
@@ -522,13 +661,25 @@
   function highlightSelectedRow(num) {
     var table = document.getElementById('attendee-table');
     if (!table) return;
-    table.querySelectorAll('tbody tr').forEach(function (row) {
-      row.classList.remove('attendee-selected');
-    });
     var rows = table.querySelectorAll('tbody tr');
     var target = rows[num - 1];
+    rows.forEach(function (row) {
+      var btn = row.querySelector('.btn-select-row');
+      if (target && row === target) {
+        row.classList.add('attendee-selected');
+        row.style.display = '';
+        if (btn) btn.textContent = '✓ Selected';
+      } else if (target) {
+        row.classList.remove('attendee-selected');
+        row.style.display = 'none';
+        if (btn) btn.textContent = 'Select';
+      } else {
+        row.classList.remove('attendee-selected');
+        row.style.display = '';
+        if (btn) btn.textContent = 'Select';
+      }
+    });
     if (target) {
-      target.classList.add('attendee-selected');
       target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }
@@ -542,16 +693,17 @@
     if (!gfBadgeEl) return;
     var dot = '<span style="opacity:0.4;margin:0 5px">·</span>';
     var parts = [];
-    if (badgeStudent) {
-      var st = badgeStudent;
-      parts.push(st.name
-        ? '<strong>' + st.name + '</strong>' + dot + 'FLGHT' + st.libNum
-        : '<span style="opacity:0.6;font-weight:500;font-size:0.68rem">Student&nbsp;</span><strong>' + st.num + '</strong>' + dot + 'FLGHT' + st.libNum);
-      parts.push('<span style="font-family:var(--font-mono)">:' + st.port + '</span>');
-    }
     var missing = [];
     if (!ipVal)        missing.push('IP address');
     if (!badgeStudent) missing.push('library');
+    if (badgeStudent) {
+      var st = badgeStudent;
+      var okPrefix = (missing.length === 0) ? '✅ ' : '';
+      parts.push(st.name
+        ? okPrefix + '<strong>' + st.name + '</strong>' + dot + 'FLGHT' + st.libNum
+        : okPrefix + '<span style="opacity:0.6;font-weight:500;font-size:0.68rem">Student&nbsp;</span><strong>' + st.num + '</strong>' + dot + 'FLGHT' + st.libNum);
+      parts.push('<span style="font-family:var(--font-mono)">:' + st.port + '</span>');
+    }
     if (missing.length) {
       var list = missing.length > 1
         ? missing.slice(0, -1).join(', ') + ' and ' + missing[missing.length - 1]

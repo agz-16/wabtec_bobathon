@@ -27,40 +27,77 @@
 
         <div class="use-case">
           <div class="use-case-header">
-            <div class="uc-title">4.1 — Open the SSH Tunnel and Connect ACS</div>
+            <div class="uc-title">4.1 — Open the 5250 Green Screen in Bob</div>
             <div class="uc-arrow" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l5 5 5-5"/></svg></div>
           </div>
           <div class="uc-body"><div class="uc-body-inner">
-            <p class="uc-desc">The SSH tunnel gives your laptop access to the 5250 green screen, database access, and your React app port. Open it before you continue. You need the <code>ae_primary_key.pem</code> file you prepared in Setup 0.5.</p>
+            <p class="uc-desc">Bob has a built-in 5250 terminal that uses your existing IBM i connection. There is nothing to install, no extra SSH command, and it works the same on Windows and macOS.</p>
+            <div class="info-box">💡 If the 5250 emulator doesn't work for you, don't worry. Just keep going. You can complete the rest of the exercise without it. It is only here to show you the existing green-screen application before we modernize it.</div>
             <div class="mode-steps">
               <div class="mode-step">
                 <div class="step-num">1</div>
                 <div class="step-body">
-                  <div class="step-title">Open the SSH tunnel (required for 5250, database access &amp; React app ports)</div>
-                  <div class="step-desc">The IP address in the command is filled in from what you entered in Setup 0.3. If the command still shows <code>&lt;myIPaddress&gt;</code>, go back to Setup 0.3 and paste your IP address.</div>
-                  <div class="warn-box">⚠️ <strong>Run the command from the folder that contains <code>ae_primary_key.pem</code>.</strong> If SSH reports that the key file is not found, change to the directory where you saved it first (for example <code>cd ~/Downloads</code>), or replace <code>ae_primary_key.pem</code> in the command with the full path to the file.</div>
-                  <div class="step-desc"><strong>macOS / Linux</strong> — run in <strong>Terminal</strong> (no <code>sudo</code> needed — all forwarded ports are above 1024). <strong>Windows</strong> — run in <strong>PowerShell</strong> or <strong>Windows Terminal</strong>; no <code>sudo</code>.</div>
- <div class="step-screenshot">
- <img src="img/bob-lab-network.png" alt="Lab network diagram — Bob IDE and ACS connecting via SSH tunnel to IBM i on TechZone"/>
- <div class="step-screenshot-caption">Lab connectivity overview — Bob IDE and ACS connect through an SSH tunnel to your IBM i TechZone LPAR</div>
- </div>
-                  <div class="step-prompt"><pre>ssh -L 50000:localhost:23 -L 2001:localhost:2001 -L 449:localhost:449 -L 8470:localhost:8470 -L 8471:localhost:8471 -L 8472:localhost:8472 -L 2007:localhost:2007 -L 8473:localhost:8473 -L 8474:localhost:8474 -L 8475:localhost:8475 -L 8476:localhost:8476 -L 2003:localhost:2003 -L 2002:localhost:2002 -L 2006:localhost:2006 -L 2300:localhost:2300 -L 2323:localhost:2323 -L 2005:localhost:2005 -L 8076:localhost:8076 -L 3001:localhost:3001 -L 3002:localhost:3002 -L 3003:localhost:3003 -L 3004:localhost:3004 -L 3005:localhost:3005 -L 3006:localhost:3006 -L 3007:localhost:3007 -L 3008:localhost:3008 -L 3009:localhost:3009 -L 3010:localhost:3010 -L 3011:localhost:3011 -L 3012:localhost:3012 -L 3013:localhost:3013 -L 3014:localhost:3014 -L 3015:localhost:3015 -L 3016:localhost:3016 -L 3017:localhost:3017 -L 3018:localhost:3018 -L 3019:localhost:3019 -L 3020:localhost:3020 -L 3021:localhost:3021 -L 3022:localhost:3022 -L 3023:localhost:3023 -L 3024:localhost:3024 -L 3025:localhost:3025 -L 3026:localhost:3026 -L 3027:localhost:3027 -L 3028:localhost:3028 -L 3029:localhost:3029 -L 3030:localhost:3030 -L 3031:localhost:3031 -L 3032:localhost:3032 -L 3033:localhost:3033 -L 3034:localhost:3034 -L 3035:localhost:3035 -L 3036:localhost:3036 -L 3037:localhost:3037 -L 3038:localhost:3038 -L 3039:localhost:3039 -L 3040:localhost:3040 -L 3041:localhost:3041 -L 3042:localhost:3042 -L 3043:localhost:3043 -L 3044:localhost:3044 -L 3045:localhost:3045 -L 3046:localhost:3046 -L 3047:localhost:3047 -L 3048:localhost:3048 -L 3049:localhost:3049 -L 3050:localhost:3050 -o ExitOnForwardFailure=yes -o ServerAliveInterval=15 -o ServerAliveCountMax=3 ITZUSER@&lt;myIPaddress&gt; -i ae_primary_key.pem</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
-                  <div class="info-box">💡 <strong>No IBM ID yet?</strong> Create one for free at <a href="https://www.ibm.com/account" target="_blank" rel="noopener">ibm.com/account</a>. For 5250 or database access, install <a href="https://www.ibm.com/support/pages/ibm-i-access-client-solutions" target="_blank" rel="noopener">IBM i Access Client Solutions</a>.</div>
+                  <div class="step-title">Open the 5250 terminal in Bob</div>
+                  <div class="step-desc">Make sure Bob is still connected to your IBM i. In the bottom status bar, hover over <strong>ibm i ae primary</strong> and click <strong>Terminals</strong>. When you see the prompt <strong>Select a terminal type</strong> at the top of the window, choose <strong>5250</strong>. You should see the IBM i <strong>Sign On</strong> screen.</div>
+                  <div class="step-screenshot">
+                    <img src="img/hover-click-terminals.png" alt="Hovering over ibm i ae primary in the status bar and clicking Terminals"/>
+                    <div class="step-screenshot-caption">Hover over <strong>ibm i ae primary</strong> in the status bar, then click <strong>Terminals</strong></div>
+                  </div>
+                  <div class="step-screenshot">
+                    <img src="img/choose5250.png" alt="Select a terminal type prompt with PASE and 5250 options"/>
+                    <div class="step-screenshot-caption">Choose <strong>5250</strong> (not PASE)</div>
+                  </div>
+                  <div class="step-screenshot">
+                    <img src="img/5250login.png" alt="IBM i Sign On screen in the Bob 5250 terminal"/>
+                    <div class="step-screenshot-caption">Confirm you see the Sign On screen</div>
+                  </div>
                 </div>
               </div>
               <div class="mode-step">
                 <div class="step-num">2</div>
                 <div class="step-body">
-                  <div class="step-title">Connect IBM i Access Client Solutions for 5250</div>
-                  <div class="step-desc">Install <a href="https://www.ibm.com/support/pages/ibm-i-access-client-solutions" target="_blank" rel="noopener">IBM i Access Client Solutions</a>, then make sure the SSH tunnel from step 1 is running.</div>
-                  <div class="warn-box mb-s">⚠️ <strong>ACS requires Java.</strong> If ACS does not open after installation, install a supported Java runtime (e.g. <a href="https://adoptium.net" target="_blank" rel="noopener">Eclipse Temurin</a>) and try again.</div>
-                  <div class="step-desc">Open the 5250 Emulator. Set IP Address to <code>127.0.0.1</code> and port to <code>50000</code>. If it tries port 23, override it in Communication → Configure → Destination Port: <code>50000</code>. Log in with your username and password.</div>
-                  <div class="step-desc">Add your library and open the Flight Maintenance screen:</div>
-                  <div class="step-prompt"><pre>ADDLIBLE FLGHT4nn</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
-                  <div class="step-prompt mt-s"><pre>CALL FLGHT4nn/FRS021</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+                  <div class="step-title">Log in to the 5250 terminal</div>
+                  <div class="step-desc">On the Sign On screen, type the same <strong>username</strong> you have been using. Press <strong>Tab</strong> to move to the next field, which is <strong>Password</strong>. Type the password your instructor gave you, then press <strong>Enter</strong>. You will land on the <strong>main menu</strong>.</div>
                   <div class="step-screenshot">
-                    <img src="img/ACS-green-screen.png" alt="Flight Maintenance screen in 5250 emulator"/>
-                    <div class="step-screenshot-caption">Flight Maintenance screen in the 5250 emulator</div>
+                    <img src="img/5250user.png" alt="Sign On screen with the user name entered"/>
+                    <div class="step-screenshot-caption">Enter your username, then press <strong>Tab</strong></div>
+                  </div>
+                  <div class="info-box">💡 Your password is hidden as you type, so you won't see any characters on the screen. That's normal, but it makes typos easy to miss. We recommend copying the password and pasting it in once you press <strong>Tab</strong> after your username. Paste with <strong>Command+V</strong> on a Mac or <strong>Ctrl+V</strong> on Windows.</div>
+                  <div class="step-screenshot">
+                    <img src="img/menuscreen.png" alt="IBM i Main Menu"/>
+                    <div class="step-screenshot-caption">Press <strong>Enter</strong> after your password and you'll land on the main menu</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mode-step">
+                <div class="step-num">3</div>
+                <div class="step-body">
+                  <div class="step-title">Add your library</div>
+                  <div class="step-desc">At the IBM i Main Menu, type the following command on the command line and press <strong>Enter</strong> to add the <strong>FLGHT4nn</strong> library to your session's library list. You should then see the message <strong>Library FLGHT4nn added to library list.</strong></div>
+                  <div class="step-prompt"><pre>ADDLIBLE FLGHT4nn</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+                  <div class="step-screenshot">
+                    <img src="img/5250-com1.png" alt="ADDLIBLE command typed on the Main Menu command line"/>
+                    <div class="step-screenshot-caption">Enter the command</div>
+                  </div>
+                  <div class="step-screenshot">
+                    <img src="img/flghtadded.png" alt="Message: Library FLGHT4nn added to library list"/>
+                    <div class="step-screenshot-caption">Confirm the library was added</div>
+                  </div>
+                </div>
+              </div>
+              <div class="mode-step">
+                <div class="step-num">4</div>
+                <div class="step-body">
+                  <div class="step-title">Launch the program</div>
+                  <div class="step-desc">On the command line, type the following command and press <strong>Enter</strong> to launch the Flight Maintenance program directly.</div>
+                  <div class="step-prompt"><pre>CALL FLGHT4nn/FRS021</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+                  <div class="step-screenshot">
+                    <img src="img/entercom2.png" alt="CALL FLGHT4nn/FRS021 typed on the Main Menu command line"/>
+                    <div class="step-screenshot-caption">Enter the command</div>
+                  </div>
+                  <div class="step-screenshot">
+                    <img src="img/flightmatscreen.png" alt="Flight Maintenance System - Flight Schedule screen"/>
+                    <div class="step-screenshot-caption">Confirm you see the Flight Maintenance screen</div>
                   </div>
                   <div class="warn-box">⚠️ When finished, exit the 5250 screen by pressing <strong>F3</strong>.</div>
                 </div>
@@ -91,7 +128,7 @@
                 <div class="step-body">
                   <div class="step-title">Copy the skill text and create the skill</div>
                   <div class="step-desc">Expand the box below to reveal the skill text and click <strong>Copy</strong>. Paste it into the Bob chat, then add this instruction and send:</div>
-                  <div class="step-prompt"><pre>Create a skill from the pasted text.</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+                  <div class="step-prompt"><pre>Create a global skill from the pasted text.</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
                   <details class="skill-details">
                     <summary>Show skill text</summary>
                     <div class="step-prompt"><pre>---
@@ -737,7 +774,7 @@ These rules apply before any `npm`, `node`, `npx`, or `vite` command:
                 <div class="step-body">
                   <div class="step-title">Copy the prompt and paste it</div>
                   <div class="step-desc">With the screenshot in the chat prompt, copy the prompt below, paste it after the screenshot, and send.</div>
-                  <div class="step-prompt"><pre>Given this screenshot of the 5250 flight order screen from the Application Flight4nn in @FLGHT4nn, Build a single-page React 18 + Vite 4 app on IBM i (PASE) using @carbon/react ^1.x with the g100 dark theme that modernises the IBM i 5250 screen shown in the attached screenshot. Create the app in the IFS at $HOME/flight4nn-frontend-apps/screen-name/. Use the g100 dark theme. All fields should have a list of values to select from. The dev server must run in the background using nohup … &amp; and write output to /tmp/vite-dev.log. Pin the Vite dev server to port 30nn if available.</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+                  <div class="step-prompt"><pre>Given this screenshot of the 5250 flight order screen from the Application Flight4nn in @FLGHT4nn, Build a single-page React 18 + Vite 4 app on IBM i (PASE) using @carbon/react ^1.x with the g100 dark theme that modernises the IBM i 5250 screen shown in the attached screenshot. Create the app in the IFS at $HOME/flight4nn-frontend-apps/screen-name/. Use the g100 dark theme. All fields should have a list of values to select from. The dev server must run in the background using nohup … &amp; and write output to /tmp/vite-30nn.log and save the process ID to /tmp/vite-30nn.pid. Pin the Vite dev server to port 30nn if available.</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
                   <div class="step-screenshot">
                     <img src="img/Flight-react-agentic.png" alt="Example of the React Carbon app generated from a 5250 screen"/>
                     <div class="step-screenshot-caption">Example result — React Carbon app modernising a 5250 screen</div>
@@ -765,16 +802,30 @@ These rules apply before any `npm`, `node`, `npx`, or `vite` command:
               <div class="mode-step">
                 <div class="step-num">2</div>
                 <div class="step-body">
-                  <div class="step-desc">Then open <code>http://localhost:30nn</code> in your browser.</div>
-                  <div class="info-box">💡 <strong>Nothing showing in your browser?</strong> Make sure the SSH tunnel from step 4.1.1 is still running and that it includes your port number. Note that the port number and the look &amp; feel of the generated app may differ from any examples shown.</div>
+                  <div class="step-title">Forward your port to your laptop</div>
+                  <div class="step-desc">The app runs on the IBM i, so your laptop needs a tunnel to port <code>30nn</code>. In <strong>PowerShell</strong> / <strong>Windows Terminal</strong> (Windows) or <strong>Terminal</strong> (macOS), from the folder that contains <code>ae_primary_key.pem</code> (for example <code>cd ~/Downloads</code>), run the command below and leave it running. No <code>sudo</code> or administrator rights are needed because port <code>30nn</code> is above 1024.</div>
+                  <div class="step-prompt"><pre>ssh -L 30nn:127.0.0.1:30nn -o ServerAliveInterval=15 -i ae_primary_key.pem ITZUSER@&lt;myIPaddress&gt;</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+                  <div class="step-screenshot">
+                    <img src="img/cmdworked.png" alt="Terminal showing the Welcome to IBM Technology Zone banner and a $ prompt after the port forward connected"/>
+                    <div class="step-screenshot-caption">This screen means the port forwarding was successful</div>
+                  </div>
+                  <div class="info-box">💡 Leave this terminal window open while you use the app. To stop the port forwarding when you are done, click in the terminal window and press <strong>Ctrl+C</strong> (on both Mac and Windows), or just close the window.</div>
                 </div>
               </div>
               <div class="mode-step">
                 <div class="step-num">3</div>
                 <div class="step-body">
+                  <div class="step-title">Open the app</div>
+                  <div class="step-desc">Open <code>http://localhost:30nn</code> in your browser.</div>
+                  <div class="info-box">💡 <strong>Nothing showing in your browser?</strong> Make sure your port forward from step 2 is still active and uses your port number. Note that the port number and the look &amp; feel of the generated app may differ from any examples shown.</div>
+                </div>
+              </div>
+              <div class="mode-step">
+                <div class="step-num">4</div>
+                <div class="step-body">
                   <div class="step-title">Stop the app</div>
                   <div class="step-desc">Once you finish playing around with the React app, ask Bob to stop it:</div>
-                  <div class="step-prompt"><pre>Stop the web service for FLGHT4nn on port 30nn</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+                  <div class="step-prompt"><pre>Stop the web service for FLGHT4nn on port 30nn. Stop ONLY the process whose PID is in /tmp/vite-30nn.pid (or that listens on port 30nn). Never use pkill or killall – other people share this user.</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
                 </div>
               </div>
             </div>

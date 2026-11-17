@@ -719,12 +719,75 @@ pre, code, kbd, samp {
 .data-table tr:last-child td { border-bottom: none; }
 .data-table tbody tr { cursor: pointer; transition: background 150ms var(--ease-out); }
 .data-table tbody tr:hover td { background: rgba(255,255,255,0.04); }
-.data-table tbody tr.attendee-selected td { background: rgba(15,98,254,0.12); }
+.data-table tbody tr.attendee-selected td { background: rgba(15,98,254,0.14); }
 .data-table tbody tr.attendee-selected td:first-child { border-left: 3px solid var(--ibm-blue); padding-left: 9px; }
 .data-table code { color: #7db3f5; }
 
+.btn-select-row {
+  background: rgba(15,98,254,0.12);
+  border: 1px solid rgba(15,98,254,0.35);
+  color: #7db3f5;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 150ms var(--ease-out);
+}
+.btn-select-row:hover {
+  background: var(--ibm-blue);
+  color: #ffffff;
+  border-color: var(--ibm-blue);
+  transform: translateY(-1px);
+}
+.attendee-selected .btn-select-row {
+  background: #1a7a4a;
+  border-color: #1a7a4a;
+  color: #ffffff;
+  font-weight: 800;
+}
+[data-theme="light"] .btn-select-row {
+  background: rgba(15,98,254,0.08);
+  border-color: rgba(15,98,254,0.3);
+  color: var(--ibm-blue);
+}
+[data-theme="light"] .attendee-selected .btn-select-row {
+  background: #1a7a4a;
+  border-color: #1a7a4a;
+  color: #ffffff;
+}
+
+/* Active Library & IP Status Badges */
+.library-status-badge {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: rgba(26,122,74,0.12); border: 1px solid rgba(26,122,74,0.40);
+  border-radius: 10px; padding: 10px 16px; margin: 12px 0 10px;
+  font-size: 0.88rem; color: var(--text);
+  animation: banner-pop 250ms var(--ease-spring);
+}
+.library-status-badge.hidden, .ip-status-badge.hidden, .data-table.hidden { display: none !important; }
+.library-status-badge strong { color: #42be65; }
+.library-status-badge .btn-switch-lib {
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18);
+  color: var(--text); font-size: 0.75rem; font-weight: 600;
+  padding: 4px 10px; border-radius: 6px; cursor: pointer;
+  transition: background 150ms var(--ease-out);
+}
+.library-status-badge .btn-switch-lib:hover { background: rgba(255,255,255,0.16); }
+
+.ip-status-badge {
+  margin-top: 6px; padding: 6px 12px;
+  background: rgba(26,122,74,0.12); border: 1px solid rgba(26,122,74,0.35);
+  border-radius: 8px; font-size: 0.82rem; color: #42be65; font-weight: 600;
+  animation: banner-pop 250ms var(--ease-spring);
+}
+@keyframes banner-pop {
+  0% { transform: translateY(-4px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
 /* Server IP address field (Setup 0.3) */
-.server-ip-field { margin: 4px 0 14px; max-width: 360px; }
+.server-ip-field { margin: 4px 0 14px; max-width: 440px; }
 .server-ip-field label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
 .server-ip-field input {
   width: 100%; padding: 9px 12px; font: inherit; font-family: var(--font-mono);
@@ -973,6 +1036,106 @@ footer {
   .student-badge.needs-choice { animation: none; }
 }
 .student-badge-clear:hover { background: rgba(194,18,10,0.25); border-color: rgba(194,18,10,0.5); color: #f87171; }
+
+/* ── CONFIRMATION MODAL (Step 0.3 Library Selection) ── */
+.student-confirm-overlay {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(0,0,0,0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 220ms var(--ease-out);
+}
+.student-confirm-overlay.active {
+  opacity: 1; pointer-events: auto;
+}
+.student-confirm-modal {
+  background: #13161e;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  width: min(540px, 94vw);
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.06);
+  padding: 24px 24px 20px;
+  transform: scale(0.95) translateY(10px);
+  transition: transform 220ms var(--ease-spring);
+}
+.student-confirm-overlay.active .student-confirm-modal {
+  transform: scale(1) translateY(0);
+}
+[data-theme="light"] .student-confirm-modal {
+  background: #ffffff;
+  border-color: rgba(0,0,0,0.12);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.18);
+}
+.student-confirm-header {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+  margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--border);
+}
+.student-confirm-title {
+  font-size: 1.12rem; font-weight: 800; color: var(--text);
+  display: flex; align-items: center; gap: 8px;
+}
+.student-confirm-body {
+  font-size: 0.92rem; color: var(--muted); line-height: 1.6;
+}
+.student-confirm-target {
+  background: rgba(15,98,254,0.08); border: 1px solid rgba(15,98,254,0.30);
+  border-radius: 10px; padding: 12px 14px; margin-bottom: 14px;
+}
+.student-confirm-target .lib-num {
+  font-size: 1.15rem; font-weight: 800; color: #7db3f5; font-family: var(--font-mono);
+}
+.student-confirm-points {
+  margin: 12px 0 16px; display: flex; flex-direction: column; gap: 10px;
+}
+.student-confirm-point {
+  display: flex; gap: 10px; align-items: flex-start; font-size: 0.88rem;
+}
+.student-confirm-point-icon { flex-shrink: 0; font-size: 1rem; line-height: 1.3; }
+.student-confirm-actions {
+  display: flex; gap: 10px; justify-content: flex-end; margin-top: 18px; padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.student-confirm-btn {
+  padding: 8px 18px; border-radius: 8px; font-size: 0.85rem; font-weight: 700;
+  cursor: pointer; transition: background 150ms var(--ease-out), transform 100ms var(--ease-out);
+}
+.student-confirm-btn-primary {
+  background: var(--ibm-blue); color: white; border: none;
+}
+.student-confirm-btn-primary:hover {
+  background: #0047cc; transform: translateY(-1px);
+}
+.student-confirm-btn-secondary {
+  background: rgba(255,255,255,0.08); border: 1px solid var(--border); color: var(--text);
+}
+.student-confirm-btn-secondary:hover {
+  background: rgba(255,255,255,0.14);
+}
+
+/* ── PROMPT REMINDER TOAST ── */
+.prompt-toast {
+  position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-20px);
+  background: #1e1b13; border: 1px solid rgba(240,171,0,0.6);
+  color: #f7ce46; font-size: 0.86rem; font-weight: 600;
+  padding: 10px 18px; border-radius: 10px; z-index: 600;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.55);
+  display: flex; align-items: center; gap: 10px;
+  opacity: 0; pointer-events: none;
+  transition: transform 250ms var(--ease-spring), opacity 200ms var(--ease-out);
+}
+.prompt-toast.toast-active {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1; pointer-events: auto;
+}
+[data-theme="light"] .prompt-toast {
+  background: #fffbeb; border-color: rgba(180,120,0,0.5); color: #854d0e;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
 
 /* ── RESPONSIVE ── */
 @media (max-width: 640px) {
