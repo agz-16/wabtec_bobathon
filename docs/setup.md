@@ -142,36 +142,6 @@ Two extensions are required. The **IBM Bob Premium Package for i** is often pre-
    | 18 |  | `FLGHT418` | 3018 | `http://localhost:3018` |
    | 19 |  | `FLGHT419` | 3019 | `http://localhost:3019` |
    | 20 |  | `FLGHT420` | 3020 | `http://localhost:3020` |
-   | 21 |  | `FLGHT421` | 3021 | `http://localhost:3021` |
-   | 22 |  | `FLGHT422` | 3022 | `http://localhost:3022` |
-   | 23 |  | `FLGHT423` | 3023 | `http://localhost:3023` |
-   | 24 |  | `FLGHT424` | 3024 | `http://localhost:3024` |
-   | 25 |  | `FLGHT425` | 3025 | `http://localhost:3025` |
-   | 26 |  | `FLGHT426` | 3026 | `http://localhost:3026` |
-   | 27 |  | `FLGHT427` | 3027 | `http://localhost:3027` |
-   | 28 |  | `FLGHT428` | 3028 | `http://localhost:3028` |
-   | 29 |  | `FLGHT429` | 3029 | `http://localhost:3029` |
-   | 30 |  | `FLGHT430` | 3030 | `http://localhost:3030` |
-   | 31 |  | `FLGHT431` | 3031 | `http://localhost:3031` |
-   | 32 |  | `FLGHT432` | 3032 | `http://localhost:3032` |
-   | 33 |  | `FLGHT433` | 3033 | `http://localhost:3033` |
-   | 34 |  | `FLGHT434` | 3034 | `http://localhost:3034` |
-   | 35 |  | `FLGHT435` | 3035 | `http://localhost:3035` |
-   | 36 |  | `FLGHT436` | 3036 | `http://localhost:3036` |
-   | 37 |  | `FLGHT437` | 3037 | `http://localhost:3037` |
-   | 38 |  | `FLGHT438` | 3038 | `http://localhost:3038` |
-   | 39 |  | `FLGHT439` | 3039 | `http://localhost:3039` |
-   | 40 |  | `FLGHT440` | 3040 | `http://localhost:3040` |
-   | 41 |  | `FLGHT441` | 3041 | `http://localhost:3041` |
-   | 42 |  | `FLGHT442` | 3042 | `http://localhost:3042` |
-   | 43 |  | `FLGHT443` | 3043 | `http://localhost:3043` |
-   | 44 |  | `FLGHT444` | 3044 | `http://localhost:3044` |
-   | 45 |  | `FLGHT445` | 3045 | `http://localhost:3045` |
-   | 46 |  | `FLGHT446` | 3046 | `http://localhost:3046` |
-   | 47 |  | `FLGHT447` | 3047 | `http://localhost:3047` |
-   | 48 |  | `FLGHT448` | 3048 | `http://localhost:3048` |
-   | 49 |  | `FLGHT449` | 3049 | `http://localhost:3049` |
-   | 50 |  | `FLGHT450` | 3050 | `http://localhost:3050` |
 
    > 💡 **Note:** The **Dev Port** (`30nn`) is only used later in **Exercise 4** when launching the modernized web application.
 

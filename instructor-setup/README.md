@@ -188,7 +188,7 @@ The Save File `FLGHT400.FILE` contains the code, programs, database files etc. E
 | 3  | FLGHT403 | 3003 | http://localhost:3003 |
 | 4  | FLGHT404 | 3004 | http://localhost:3004 |
 | … | … | … | … |
-| 50 | FLGHT450 | 3050 | http://localhost:3050 |
+| 20 | FLGHT420 | 3020 | http://localhost:3020 |
 
 > 💡 The **Dev Port** is only needed if you complete **Exercise 4 (Optional)**. When Bob asks you to pin your Vite dev server to a port, use the value from the **Dev Port** column above. Your React app will then be reachable at the **React App URL** shown — provided your SSH tunnel from step 6 is active.
 
