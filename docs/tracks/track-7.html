@@ -803,8 +803,8 @@ These rules apply before any `npm`, `node`, `npx`, or `vite` command:
                 <div class="step-num">2</div>
                 <div class="step-body">
                   <div class="step-title">Forward your port to your laptop</div>
-                  <div class="step-desc">The app runs on the IBM i, so your laptop needs a tunnel to port <code>30nn</code>. In <strong>PowerShell</strong> / <strong>Windows Terminal</strong> (Windows) or <strong>Terminal</strong> (macOS), from the folder that contains <code>ae_primary_key.pem</code> (for example <code>cd ~/Downloads</code>), run the command below and leave it running. No <code>sudo</code> or administrator rights are needed because port <code>30nn</code> is above 1024.</div>
-                  <div class="step-prompt"><pre>ssh -L 30nn:127.0.0.1:30nn -o ServerAliveInterval=15 -i ae_primary_key.pem ITZUSER@&lt;myIPaddress&gt;</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
+                  <div class="step-desc">The app runs on the IBM i, so your laptop needs a tunnel to port <code>30nn</code>. In <strong>PowerShell</strong> / <strong>Windows Terminal</strong> (Windows) or <strong>Terminal</strong> (macOS), from the folder that contains <code>primary_key.pem</code> (for example <code>cd ~/Downloads</code>), run the command below and leave it running. No <code>sudo</code> or administrator rights are needed because port <code>30nn</code> is above 1024.</div>
+                  <div class="step-prompt"><pre>ssh -L 30nn:127.0.0.1:30nn -o ServerAliveInterval=15 -i primary_key.pem ITZUSER@&lt;myIPaddress&gt;</pre><button class="copy-btn" aria-label="Copy">Copy</button></div>
                   <div class="step-screenshot">
                     <img src="img/cmdworked.png" alt="Terminal showing the Welcome to IBM Technology Zone banner and a $ prompt after the port forward connected"/>
                     <div class="step-screenshot-caption">This screen means the port forwarding was successful</div>

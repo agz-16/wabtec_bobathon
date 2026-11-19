@@ -155,9 +155,9 @@ Two extensions are required. The **IBM Bob Premium Package for i** is often pre-
 
 Your instructor has sent you a zip file. Double-click it to open it. When it asks for a password, enter the password your instructor gives you. After you enter it, you will see a **.pem key file**. Save it somewhere you can find it, because you will use this private key to connect Bob to IBM i.
 
-1. **Extract the encrypted private key archive** — Your instructor has provided a password-protected zip file containing your private key. Double-click the zip file, and you will be prompted to enter a password. Enter the password your instructor gives you. This should leave you with the `ae_primary_key.pem` file, which is the private key you will use to connect to your IBM i server for today's lab.
+1. **Extract the encrypted private key archive** — Your instructor has provided a password-protected zip file containing your private key. Double-click the zip file, and you will be prompted to enter a password. Enter the password your instructor gives you. This should leave you with the `primary_key.pem` file, which is the private key you will use to connect to your IBM i server for today's lab.
 
-   > 💡 **Tip:** Keep `ae_primary_key.pem` in a known folder on your computer (such as your **Downloads** folder) so you can easily browse to it when connecting.
+   > 💡 **Tip:** Keep `primary_key.pem` in a known folder on your computer (such as your **Downloads** folder) so you can easily browse to it when connecting.
 
 2. **Tighten private key permissions** — Open your terminal or command prompt. You **must be in the directory / folder where you have the key saved**. If you just downloaded it, odds are it is in your Downloads folder, so `cd` to Downloads first:
 
@@ -170,7 +170,7 @@ Your instructor has sent you a zip file. Double-click it to open it. When it ask
    In the terminal, tighten the permissions on the SSH private key so it can be used for authentication. Copy and paste the following command, then press **Enter**:
 
    ```
-   chmod 600 ae_primary_key.pem
+   chmod 600 primary_key.pem
    ```
 
    **Windows** — in **PowerShell**, navigate to your Downloads folder:
@@ -182,7 +182,7 @@ Your instructor has sent you a zip file. Double-click it to open it. When it ask
    In the terminal, tighten the permissions on the SSH private key so it can be used for authentication. Copy and paste the following command, then press **Enter** (run PowerShell as Administrator if the command fails):
 
    ```
-   icacls ae_primary_key.pem /inheritance:r /grant:r "$($env:USERNAME):R"
+   icacls primary_key.pem /inheritance:r /grant:r "$($env:USERNAME):R"
    ```
 
    > 💡 **Why this matters:** SSH will refuse to use a private key that is readable by other users on the system. `chmod 600` (and the equivalent `icacls` rule on Windows) restricts read and write access to only your user account, satisfying SSH's security check.
@@ -191,7 +191,7 @@ Your instructor has sent you a zip file. Double-click it to open it. When it ask
 
 ## 0.5 — Connect Bob IDE to IBM i
 
-1. **Add a new connection** — Click the IBM i icon in the Activity Bar (indicated by the red arrow in the screenshot below), then click **New Connection**. Enter the host IP `<myIPaddress>`, the user profile `ITZUSER`, and select the `ae_primary_key.pem` private key file you prepared in step 0.4. When prompted for the private key, browse to where you saved `ae_primary_key.pem` on your computer. **Do not use a password here — use only the `ae_primary_key.pem` private key file.**
+1. **Add a new connection** — Click the IBM i icon in the Activity Bar (indicated by the red arrow in the screenshot below), then click **New Connection**. Enter the host IP `<myIPaddress>`, the user profile `ITZUSER`, and select the `primary_key.pem` private key file you prepared in step 0.4. When prompted for the private key, browse to where you saved `primary_key.pem` on your computer. **Do not use a password here — use only the `primary_key.pem` private key file.**
 
    ![IBM i icon in the Bob Activity Bar](img/ibmi_icon.png)
 

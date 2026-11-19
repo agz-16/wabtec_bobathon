@@ -1,6 +1,6 @@
-# FLIGHT400 Lab · American Eagle Bobathon
+# FLIGHT400 Lab · Wabtec Bobathon
 
-This repository contains the lab materials for the American Eagle IBM i Modernization Bobathon — a hands-on workshop where participants use IBM Bob IDE to explore, modernize, and extend a real IBM i application (FLIGHT400). Exercises cover code explanation, RPG modernization, system querying, React app generation, field expansion, SQL optimization, and automated testing.
+This repository contains the lab materials for the Wabtec IBM i Modernization Bobathon — a hands-on workshop where participants use IBM Bob IDE to explore, modernize, and extend a real IBM i application (FLIGHT400). Exercises cover code explanation, RPG modernization, system querying, React app generation, field expansion, SQL optimization, and automated testing.
 
 ---
 
@@ -9,17 +9,17 @@ This repository contains the lab materials for the American Eagle IBM i Moderniz
 **Everything you need to complete the lab is available on the hosted lab site.** Start with the environment setup, then work through the exercises at your own pace.
 
 #### Participant Setup — Interactive setup guide with screenshots.
-https://liv-fing.github.io/american_eagle_bobathon/setup.html
+https://agz-16.github.io/wabtec_bobathon/setup.html
 
 #### Lab Guide — Full exercise catalog with step-by-step instructions.
-https://liv-fing.github.io/american_eagle_bobathon/
+https://agz-16.github.io/wabtec_bobathon/
 
 
 #### Offline copy of the lab guide
 
 Use this if you want to read the whole guide (setup and all exercises, with screenshots) locally on your computer. 
 
-1. Download the zip: https://github.com/liv-fing/american_eagle_bobathon/raw/main/offline.zip
+1. Download the zip: https://github.com/agz-16/wabtec_bobathon/raw/main/offline.zip
 2. Unzip it and open the `offline` folder.
 3. Double-click **`index.html`**. It opens in your web browser. It is one self-contained file (about 21 MB) with all the screenshots built in.
 

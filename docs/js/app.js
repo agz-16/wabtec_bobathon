@@ -132,9 +132,9 @@
   // window.FLIGHT400_TRACK_PREFIX is retained for backwards compatibility
   // but is superseded by the local-override mechanism above.
 
-  var DEFAULT_TRACK_SLUGS = ['setup', 'track-1', 'track-2', 'track-3', 'track-4', 'track-5', 'track-6', 'track-7'];
+  var DEFAULT_TRACK_SLUGS = ['setup', 'track-5', 'track-2', 'track-1', 'track-7', 'track-3', 'track-4', 'track-6'];
   // Tracks shown inside the collapsed "Additional Exercises" group.
-  var ADDITIONAL_SLUGS = ['track-3', 'track-4', 'track-6'];
+  var ADDITIONAL_SLUGS = ['track-7', 'track-3', 'track-4', 'track-6'];
   // Tracks shown inside the collapsible "Environment Setup" group (index.html only).
   var SETUP_SLUGS = ['setup'];
   var cfgTracks = (window.FLIGHT400_CONFIG || {}).tracks;
@@ -384,7 +384,7 @@
   // ── SERVER IP ADDRESS ────────────────────────────────────────────────────
   // Fills <myIPaddress> (from the IP address the attendee pastes once in step 0.3)
   // across the guide. No IP address is stored in this code. The key file is always
-  // ae_primary_key.pem, written literally in the guide.
+  // primary_key.pem, written literally in the guide.
   var IP_KEY     = 'flight400-ip-v1';
   var IPV4_RE = /^(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}$/;
   var studentSel   = null;   // { num, nn, libNum, port } once a row is chosen
